@@ -1,2 +1,2 @@
 # Nub-Bot
-A multipurpose discord bot written in discord.js.
+A multipurpose discord bot written in discord.js v14.
