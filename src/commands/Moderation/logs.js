@@ -27,9 +27,9 @@ module.exports = {
                 .setTimestamp()
                 .setAuthor({ name: `Logging System`})
                 .setFooter({ text: `Logging Enabled`})
-                .setTitle('> Logging Enabled')
-                .addFields({ name: `• Logging was Enabled`, value: `> Your logging system has been set up successfuly. Your channel will now receive alerts for actions taken in your server!`})
-                .addFields({ name: `• Channel`, value: `> ${logchannel}`})
+                .setTitle('Logging Enabled')
+                .addFields({ name: `Logging was Enabled`, value: `Your logging system has been set up successfuly. Your channel will now receive alerts for actions taken in your server!`})
+                .addFields({ name: `Channel`, value: `${logchannel}`})
  
                 await interaction.reply({ embeds: [setupembed] });
  
@@ -50,8 +50,8 @@ module.exports = {
                 .setTimestamp()
                 .setAuthor({ name: `Logging System`})
                 .setFooter({ text: `Logging Disabled`})
-                .setTitle('> Logging Disabled')
-                .addFields({ name: `• Logging was Disabled`, value: `> Your logging system has been disabled successfuly. Your logging channel will no longer receive alerts for actions taken in your server!`})
+                .setTitle('Logging Disabled')
+                .addFields({ name: `Logging was Disabled`, value: `Your logging system has been disabled successfuly. Your logging channel will no longer receive alerts for actions taken in your server!`})
  
                 await interaction.reply({ embeds: [disableembed] });
  

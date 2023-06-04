@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder, PermissionsBitField } = require('discord.js');
-const levelSchema = require(`../../Schemas.js/level`);
+const levelSchema = require(`../../Schemas.js/levelSchema`);
  
 module.exports = {
     data: new SlashCommandBuilder()

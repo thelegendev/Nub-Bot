@@ -27,12 +27,12 @@ function logging(client) {
             if (message.author.bot) return;
  
             const embed = new EmbedBuilder()
-            .setTitle('> Message Deleted')
+            .setTitle('Message Deleted')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Author`, value: `> <@${message.author.id}> - *${message.author.tag}*`})
-            .addFields({ name: `• Channel`, value: `> ${message.channel}`})
-            .addFields({ name: `• Deleted Message`, value: `> ${message.content}`})
+            .addFields({ name: `Author`, value: `<@${message.author.id}> - *${message.author.tag}*`})
+            .addFields({ name: `Channel`, value: `${message.channel}`})
+            .addFields({ name: `Deleted Message`, value: `${message.content}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Message Deleted`})
  
@@ -50,12 +50,12 @@ function logging(client) {
             if (channel.guild === null) return;
  
             const embed = new EmbedBuilder()
-            .setTitle('> Topic Changed')
+            .setTitle('Topic Changed')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Channel`, value: `> ${channel}`})
-            .addFields({ name: `• Old Topic`, value: `> ${oldTopic}`})
-            .addFields({ name: `• New Topic`, value: `> ${newTopic}`})
+            .addFields({ name: `Channel`, value: `${channel}`})
+            .addFields({ name: `Old Topic`, value: `${oldTopic}`})
+            .addFields({ name: `New Topic`, value: `${newTopic}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Topic Update`})
  
@@ -73,11 +73,11 @@ function logging(client) {
             if (channel.guild === null) return;
  
             const embed = new EmbedBuilder()
-            .setTitle('> Channel Updated')
+            .setTitle('Channel Updated')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Channel`, value: `> ${channel}`})
-            .addFields({ name: `• Changes`, value: `> Channel's permissions/name were updated`})
+            .addFields({ name: `Channel`, value: `${channel}`})
+            .addFields({ name: `Changes`, value: `Channel's permissions/name were updated`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Permissions Update`})
  
@@ -95,11 +95,11 @@ function logging(client) {
         if (oldChannel.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> Channel Updated')
+            .setTitle('Channel Updated')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Channel`, value: `> ${oldChannel}`})
-            .addFields({ name: `• Changes`, value: `> **PixelVal** couldn't find any changes!`})
+            .addFields({ name: `Channel`, value: `${oldChannel}`})
+            .addFields({ name: `Changes`, value: `**Nub Bot** couldn't find any changes!`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Channel Update`})
  
@@ -119,11 +119,11 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle(`> ${member.user.username} started Boosting`)
+            .setTitle(`${member.user.username} started Boosting`)
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Server`, value: `> ${member.guild.name}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Server`, value: `${member.guild.name}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Boosting Started`})
  
@@ -143,11 +143,11 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle(`> ${member.user.username} stopped Boosting`)
+            .setTitle(`${member.user.username} stopped Boosting`)
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Server`, value: `> ${member.guild.name}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Server`, value: `${member.guild.name}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Boosting Stopped`})
  
@@ -167,11 +167,11 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle(`> ${member.user.username} was given a Role`)
+            .setTitle(`${member.user.username} was given a Role`)
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Role`, value: `> ${role}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Role`, value: `${role}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Role Given`})
  
@@ -191,11 +191,11 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle(`> ${member.user.username} lost a Role`)
+            .setTitle(`${member.user.username} lost a Role`)
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Role`, value: `> ${role}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Role`, value: `${role}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Role Removed`})
  
@@ -213,14 +213,14 @@ function logging(client) {
         try {
  
         const embed = new EmbedBuilder()
-            .setTitle('> Nickname Updated')
+            .setTitle('Nickname Updated')
             .setColor('#2f3136')
             .setTimestamp()
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Nickname Changed`})
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Old Nickname`, value: `> ${oldNickname || '**None**'}`})
-            .addFields({ name: `• New Nickname`, value: `> ${newNickname || '**None**'}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Old Nickname`, value: `${oldNickname || '**None**'}`})
+            .addFields({ name: `New Nickname`, value: `${newNickname || '**None**'}`})
  
         return send_log(member.guild.id, embed);
  
@@ -238,11 +238,11 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> User Joined')
+            .setTitle('User Joined')
             .setColor('#2f3136')
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Member ID`, value: `> ${member.user.id}`})
-            .addFields({ name: `• Member Tag`, value: `> ${member.user.tag}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Member ID`, value: `${member.user.id}`})
+            .addFields({ name: `Member Tag`, value: `${member.user.tag}`})
             .setTimestamp()
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `User Joined`})
@@ -263,11 +263,11 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> User Left')
+            .setTitle('User Left')
             .setColor('#2f3136')
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• Member ID`, value: `> ${member.user.id}`})
-            .addFields({ name: `• Member Tag`, value: `> ${member.user.tag}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `Member ID`, value: `${member.user.id}`})
+            .addFields({ name: `Member Tag`, value: `${member.user.tag}`})
             .setTimestamp()
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `User Left`})
@@ -288,11 +288,11 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle(`> ${guild.name} advanced a Boosting Level`)
+        .setTitle(`${guild.name} advanced a Boosting Level`)
         .setColor('#2f3136')
         .setTimestamp()
-        .addFields({ name: `• Info`, value: `> **${guild.name}** advanced from level **${oldLevel}** to **${newLevel}**!`})
-        .addFields({ name: `• Server`, value: `> ${member.guild.name}`})
+        .addFields({ name: `Info`, value: `**${guild.name}** advanced from level **${oldLevel}** to **${newLevel}**!`})
+        .addFields({ name: `Server`, value: `${member.guild.name}`})
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Boosting Level Up`})
  
@@ -312,11 +312,11 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle(`> ${guild.name} lost a Boosting Level`)
+        .setTitle(`${guild.name} lost a Boosting Level`)
         .setColor('#2f3136')
         .setTimestamp()
-        .addFields({ name: `• Info`, value: `> **${guild.name}** lost a level, from **${oldLevel}** to **${newLevel}**!`})
-        .addFields({ name: `• Server`, value: `> ${member.guild.name}`})
+        .addFields({ name: `Info`, value: `**${guild.name}** lost a level, from **${oldLevel}** to **${newLevel}**!`})
+        .addFields({ name: `Server`, value: `${member.guild.name}`})
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Boosting Level Down`})
         return send_log(guild.id, embed);
@@ -337,7 +337,7 @@ function logging(client) {
         const embed = new EmbedBuilder()
             .setTitle(`${guild.name}'s Banner was Updated`)
             .setColor('#2f3136')
-            .addFields({ name: `• Banner URL`, value: `> ${bannerURL}`})
+            .addFields({ name: `Banner URL`, value: `${bannerURL}`})
             .setImage(bannerURL)
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Banner Updated`})
@@ -359,9 +359,9 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> AFK channel Added')
+        .setTitle('AFK channel Added')
         .setColor('#2f3136')
-        .addFields({ name: `• AFK Channel`, value: `> ${afkChannel}`})
+        .addFields({ name: `AFK Channel`, value: `${afkChannel}`})
         .setTimestamp()
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `AFK Channel Added`})
@@ -382,10 +382,10 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Vanity URL Added')
+        .setTitle('Vanity URL Added')
         .setColor('#2f3136')
         .setTimestamp()
-        .addFields({ name: `• Vanity URL`, value: `> ${vanityURL}`})
+        .addFields({ name: `Vanity URL`, value: `${vanityURL}`})
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Vanity Created`})
  
@@ -406,9 +406,9 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Vanity URL Removed')
+        .setTitle('Vanity URL Removed')
         .setColor('#2f3136')
-        .addFields({ name: `• Old Vanity`, value: `> ${vanityURL}`})
+        .addFields({ name: `Old Vanity`, value: `${vanityURL}`})
         .setTimestamp()
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Vanity Removed`})
@@ -429,10 +429,10 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Vanity URL Updated')
+        .setTitle('Vanity URL Updated')
         .setColor('#2f3136')
-        .addFields({ name: `• Old Vanity`, value: `> ${oldVanityURL}`})
-        .addFields({ name: `• New Vanity`, value: `> ${newVanityURL}`})
+        .addFields({ name: `Old Vanity`, value: `${oldVanityURL}`})
+        .addFields({ name: `New Vanity`, value: `${newVanityURL}`})
         .setTimestamp()
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Vanity Updated`})
@@ -453,11 +453,11 @@ function logging(client) {
         if (message.guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Message Pinned')
+        .setTitle('Message Pinned')
         .setColor('#2f3136')
         .setTimestamp()
-        .addFields({ name: `• Pinner`, value: `> ${message.author}`})
-        .addFields({ name: `• Message`, value: `> ${message.content}`})
+        .addFields({ name: `Pinner`, value: `${message.author}`})
+        .addFields({ name: `Message`, value: `${message.content}`})
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Message Pinned`})
  
@@ -478,12 +478,12 @@ function logging(client) {
         if (message.author.bot) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Message Edited')
+        .setTitle('Message Edited')
         .setColor('#2f3136')
         .setTimestamp()
-        .addFields({ name: `• Member`, value: `> ${message.author}`})
-        .addFields({ name: `• Old Message`, value: `> ${oldContent}`})
-        .addFields({ name: `• New Message`, value: `> ${newContent}`})
+        .addFields({ name: `Member`, value: `${message.author}`})
+        .addFields({ name: `Old Message`, value: `${oldContent}`})
+        .addFields({ name: `New Message`, value: `${newContent}`})
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Message Edited`})
  
@@ -505,11 +505,11 @@ function logging(client) {
         if (role.guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Role position Updated')
+        .setTitle('Role position Updated')
         .setColor('#2f3136')
-        .addFields({ name: `• Role`, value: `> ${role}`})
-        .addFields({ name: `• Old Position`, value: `> ${oldPosition}`})
-        .addFields({ name: `• New Position`, value: `> ${newPosition}`})
+        .addFields({ name: `Role`, value: `${role}`})
+        .addFields({ name: `Old Position`, value: `${oldPosition}`})
+        .addFields({ name: `New Position`, value: `${newPosition}`})
         .setTimestamp()
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Role Position Updated`})
@@ -530,11 +530,11 @@ function logging(client) {
         if (role.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> Role permissions Updated')
+            .setTitle('Role permissions Updated')
             .setColor('#2f3136')
-            .addFields({ name: `• Role`, value: `> ${role}`})
-            .addFields({ name: `• Old Permissions`, value: `> ${oldPermissions}`})
-            .addFields({ name: `• New Permissions`, value: `> ${newPermissions}`})
+            .addFields({ name: `Role`, value: `${role}`})
+            .addFields({ name: `Old Permissions`, value: `${oldPermissions}`})
+            .addFields({ name: `New Permissions`, value: `${newPermissions}`})
             .setTimestamp()
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Role Permissions Updated`})
@@ -555,12 +555,12 @@ function logging(client) {
         if (member.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> Voice channel Switched')
+            .setTitle('Voice channel Switched')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${member.user}`})
-            .addFields({ name: `• From`, value: `> ${oldChannel}`})
-            .addFields({ name: `• To`, value: `> ${newChannel}`})
+            .addFields({ name: `Member`, value: `${member.user}`})
+            .addFields({ name: `From`, value: `${oldChannel}`})
+            .addFields({ name: `To`, value: `${newChannel}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Voice Swtich`})
  
@@ -580,13 +580,13 @@ function logging(client) {
         if (role.guild === null) return;
  
             const embed = new EmbedBuilder()
-            .setTitle('> Role Created')
+            .setTitle('Role Created')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Role Name`, value: `> ${role.name}`})
-            .addFields({ name: `• Role ID`, value: `> ${role.id}`})
-            .addFields({ name: `• Role HEX`, value: `> ${role.hexColor}`})
-            .addFields({ name: `• Role Pos`, value: `> ${role.position}`})
+            .addFields({ name: `Role Name`, value: `${role.name}`})
+            .addFields({ name: `Role ID`, value: `${role.id}`})
+            .addFields({ name: `Role HEX`, value: `${role.hexColor}`})
+            .addFields({ name: `Role Pos`, value: `${role.position}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Role Created`})
  
@@ -606,10 +606,10 @@ function logging(client) {
         if (role.guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('> Role Deleted')
+        .setTitle('Role Deleted')
         .setColor('#2f3136')
         .setTimestamp()
-        .addFields({ name: `• Role Name`, value: `> ${role.name}`})
+        .addFields({ name: `Role Name`, value: `${role.name}`})
         .setAuthor({ name: `Logging System`})
         .setFooter({ text: `Role Deleted`})
  
@@ -630,12 +630,12 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> User Banned')
+            .setTitle('User Banned')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${user}`})
-            .addFields({ name: `• Member ID`, value: `> ${user.id}`})
-            .addFields({ name: `• Member Tag`, value: `> ${user.tag}`})
+            .addFields({ name: `Member`, value: `${user}`})
+            .addFields({ name: `Member ID`, value: `${user.id}`})
+            .addFields({ name: `Member Tag`, value: `${user.tag}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `User Banned`})
  
@@ -655,10 +655,10 @@ function logging(client) {
         if (guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> User Unbanned')
+            .setTitle('User Unbanned')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Member`, value: `> ${user}`})
+            .addFields({ name: `Member`, value: `${user}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `User Unbanned`})
  
@@ -678,10 +678,10 @@ function logging(client) {
         if (channel.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> Channel Created')
+            .setTitle('Channel Created')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Channel`, value: `> ${channel}`})
+            .addFields({ name: `Channel`, value: `${channel}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Channel Created`})
  
@@ -701,10 +701,10 @@ function logging(client) {
         if (channel.guild === null) return;
  
         const embed = new EmbedBuilder()
-            .setTitle('> Channel Deleted')
+            .setTitle('Channel Deleted')
             .setColor('#2f3136')
             .setTimestamp()
-            .addFields({ name: `• Channel`, value: `> ${channel}`})
+            .addFields({ name: `Channel`, value: `${channel}`})
             .setAuthor({ name: `Logging System`})
             .setFooter({ text: `Channel Deleted`})
  

@@ -57,7 +57,7 @@ client.login(process.env.token).then(() => {
 
 // LEVELLING SYSTEM
 
-const levelSchema = require("./Schemas.js/level");
+const levelSchema = require("./Schemas.js/levelSchema");
 client.on(Events.MessageCreate, async (message, client) => {
  
     const { guild, author } = message;

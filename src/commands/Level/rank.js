@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder, AttachmentBuilder } = require('discord.js');
-const levelSchema = require("../../Schemas.js/level");
+const levelSchema = require("../../Schemas.js/levelSchema");
 const Canvacord = require(`canvacord`)
  
 module.exports = {
