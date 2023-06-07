@@ -12,7 +12,7 @@ module.exports = {
                    
                     async execute(interaction, client) {
 
-                      if(interaction.member.id !== '816250247616659489') return interaction.reply({ content: 'this command is locked under the developer.', ephemeral: true})
+                      if(interaction.member.id !== '816250247616659489') return interaction.reply({ content: 'This command is locked under the developer.', ephemeral: true})
 
                       const guildid = interaction.options.getString("guildid");
 

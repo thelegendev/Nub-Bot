@@ -6,7 +6,7 @@ module.exports = {
         .setDescription('Shows all the servers the bot is currently in.'),
     async execute(interaction, client) {
 
-        if(interaction.member.id !== '816250247616659489') return interaction.reply({ content: 'this command is locked under the developer.', ephemeral: true})
+        if(interaction.member.id !== '816250247616659489') return interaction.reply({ content: 'This command is locked under the developer.', ephemeral: true})
 
             let guilds = await client.guilds.fetch()
 

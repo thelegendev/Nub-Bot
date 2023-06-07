@@ -11,7 +11,7 @@ module.exports = {
             await client.user.setStatus("invisible")
             process.exit();
         } else {
-            return interaction.reply({ content: `this command is locked under the developer.`, ephemeral: true})
+            return interaction.reply({ content: `This command is locked under the developer.`, ephemeral: true})
         }
     }
 }
