@@ -4,3 +4,7 @@
 <img align="center" alt="GitHub issues" src="https://img.shields.io/github/issues/TheLegenDev/Nub-Bot?style=for-the-badge"> 
 <img align="center" alt="GitHub" src="https://img.shields.io/github/license/TheLegenDev/Nub-Bot?style=for-the-badge">
 </p>
+
+<p align="center">
+A multipurpose discord bot written in discord.js v14.
+</p>
