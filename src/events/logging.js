@@ -562,7 +562,7 @@ function logging(client) {
             .addFields({ name: `From`, value: `${oldChannel}`})
             .addFields({ name: `To`, value: `${newChannel}`})
             .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Voice Swtich`})
+            .setFooter({ text: `Voice Switch`})
  
         return send_log(member.guild.id, embed);
  

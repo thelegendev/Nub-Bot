@@ -117,7 +117,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /impersonate`, value: `<:icon3:1100724523281694781> Impersonate an user with a webhook.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /meme`, value: `<:icon3:1100724523281694781> Get a meme` })
                 .addFields({ name: `<:icon4:1100728456448323595> /pp`, value: `<:icon3:1100724523281694781> Better not talk about it.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /sound-board`, value: `<:icon3:1100724523281694781> Play the specified sound in the vc.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /sound-board`, value: `<:icon3:1100724523281694781> Play the specified sound in vc.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /waifu`, value: `<:icon3:1100724523281694781> Get a random waifu image.` })
                 .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
 
