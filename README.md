@@ -9,6 +9,13 @@
 A multipurpose discord bot based on discord.js v14.
 </p>
 
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Support](#support)
+- [License](#license)
+
 ## Installation
 Download [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
@@ -75,7 +82,7 @@ Download [Visual Studio Code](https://code.visualstudio.com/download).
 ## Contributing
 We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
 
-## Help / Support
+## Support
 Join us on [Discord](https://discord.gg/URZnqtEbsQ) to get in touch today!
 
 ## License
