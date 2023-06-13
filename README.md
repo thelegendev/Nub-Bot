@@ -17,9 +17,8 @@ A multipurpose discord bot based on discord.js v14.
 - [License](#license)
 
 ## Installation
-Download [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-
-Download [Visual Studio Code](https://code.visualstudio.com/download).
+- Download [Node.js](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+- Download [Visual Studio Code](https://code.visualstudio.com/download).
 
 ## Usage
 - **Project Setup**
@@ -32,7 +31,7 @@ Download [Visual Studio Code](https://code.visualstudio.com/download).
    
     2. Click on the green button marked `Code`. From the drop-down that appears, click `Download ZIP` to download the entire repository as a ZIP folder.
 
-    3. Extract the files to your preferred location.
+    3. Extract the files to a new folder.
 
     4. Right click the folder and open with Visual Studio Code.
 
