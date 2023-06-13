@@ -54,18 +54,23 @@ Download [Visual Studio Code](https://code.visualstudio.com/download).
 
 - **Project Execution**:
 
-    1. Navigate into the `Bot` section on the [Discord Developer Portal](https://discord.com/developers/applications) and select `Token`, 
-    click reset and paste it into the `token` variable inside the `.env` file.
+    1. Navigate into the `Bot` section on the [Discord Developer Portal](https://discord.com/developers/applications) and click `Reset Token`.
+    Paste it into the `token` variable inside the `.env` file.
 
-    2. Navigate to the `OAuth2` page and copy your `Client Id`. Place it in `index.js` / into the file according to your code.
+    2. Navigate to the `OAuth2` page and copy the `CLIENT ID`. Paste it into the `clientId` variable inside the `handleCommands.js` file.
+
+    3. Navigate to your discord server, enable developer mode and right click the dropdown beside the server name. Click `Copy Server ID` and paste it
+    into the `guildId` variable inside the `handleCommands.js` file.
     
-    3. Navigate to the `package.json` file and pay attention to the packages listed under `Dependencies`.
+    4. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
 
-    4. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
+    5. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
     for instance,
     ```js
     npm i discord.js
     ```
+    
+    6. Click the `run` button inside the terminal and type `node src/index.js` or `node .` to turn the bot online.
         
 ## Contributing
 We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
