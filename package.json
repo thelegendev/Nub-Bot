@@ -19,13 +19,13 @@
     "mongoose": "^6.0.12",
     "node-fetch": "^3.3.1"
   },
-  "name": "d.js-v14-bot",
+  "name": "Nub-Bot",
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
     "test": "node src/index.js"
   },
   "author": "TheLegend",
-  "license": "ISC",
-  "description": ""
+  "license": "Apache 2.0",
+  "description": "Nub Bot is a multipurpose discord bot that allows users to perform a multitude of diversified tasks within their discord servers. It is written in node.js and uses the discord.js library."
 }
