@@ -9,6 +9,9 @@
 A multipurpose discord bot based on discord.js v14.
 </p>
 
+> **Note**
+> If you plan to use our source code for your project, it'd be appreciated if you would credit us; preferably within your bot.
+
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
