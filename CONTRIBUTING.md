@@ -4,14 +4,14 @@ When contributing to this repository, please first discuss the change you wish t
 [issues](https://github.com/TheLegenDev/Nub-Bot/issues), [discussions](https://github.com/TheLegenDev/Nub-Bot/discussions)
 or any other method with the community leaders of this repository before making a change.
 
-Please note we have a [code of conduct](https://github.com/TheLegenDev/Nub-Bot/blob/main/CODE_OF_CONDUCT.md), 
-please follow it in all your interactions with the project.
+Please note we have a [code of conduct](https://github.com/TheLegenDev/Nub-Bot/blob/main/CODE_OF_CONDUCT.md).
+We advise you to follow it in all your interactions with the project.
 
 ## Getting Started
 
 Contributions are made to this repo via Issues and Pull Requests (PRs). A few general guidelines that cover both:
 
-- To report security vulnerabilities, please contact [TheLegend#1572](https://discord.com/users/816250247616659489).
+- To report security vulnerabilities, please contact [thelegendev](https://discord.com/users/816250247616659489).
 - Search for existing Issues and PRs before creating your own.
 - We work hard to makes sure issues are handled in a timely manner but, depending on the impact, it could take a while to investigate the root cause.
   A friendly ping in the comment thread to the submitter or a contributor can help draw attention if your issue is blocking.
