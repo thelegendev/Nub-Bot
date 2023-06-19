@@ -9,6 +9,9 @@
 A multipurpose discord bot based on discord.js v14.
 </p>
 
+> **Warning**
+> If you plan to host a public instance of our bot by using our source code, you are not allowed to use neither our bot's username nor its app icon.
+
 > **Note**
 > If you plan to use our source code for your project, it'd be appreciated if you would credit us; preferably within your bot.
 
