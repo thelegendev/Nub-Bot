@@ -30,12 +30,13 @@ A multipurpose discord bot based on discord.js v14.
 - **Project Setup**
 
     1. Fork the Github project:
-       1. Register / Login to [GitHub](https://github.com/).
+       1. Sign up / Sign in to [GitHub](https://github.com/).
        2. Navigate to [Nub-Bot](https://github.com/TheLegenDev/Nub-Bot).
        3. Click `Star` to support development.
        4. Click `Fork` to copy all code to your own repository.
    
-    2. Click on the green button marked `Code`. From the drop-down that appears, click `Download ZIP` to download the entire repository as a ZIP folder.
+    2. Click on the green button marked `Code`. From the drop-down that appears,
+    click `Download ZIP` to download the entire repository as a ZIP folder.
 
     3. Extract the files to a new folder.
 
@@ -44,7 +45,7 @@ A multipurpose discord bot based on discord.js v14.
 
 - **Obtain Discord Bot Token**
 
-    1. Log in to [Discord Developer Portal](https://discord.com/developers/applications).
+    1. Sign in to [Discord Developer Portal](https://discord.com/developers/applications).
 
     2. Create a bot:
         1. Enter the left side `Applications`.
@@ -64,26 +65,39 @@ A multipurpose discord bot based on discord.js v14.
         6. Click `Continue` > `Authorize`.
 
 
+- **Obtain MongoDB connection string**
+
+    1. Sign up / Sign in to [MongoDB](https://www.mongodb.com).
+    2. Choose your preferred cloud database plan.
+    3. Customise the cluster settings to your preference and click `Create Cluster`.
+    4. Navigate to the `Network Access` page, click `Add IP Address` and select `Allow access from anywhere`.
+    5. Navigate back to the `Database` page and click `Connect`.
+    6. Create a `database user`, click `Choose a connection method` and select `Connect your application`.
+    7. Copy your connection string and replace `<password>` with the password for the database user that you created earlier.
+
+
 - **Project Execution**:
 
     1. Navigate to the `Bot` page on the [Discord Developer Portal](https://discord.com/developers/applications) and click `Reset Token`.
     Paste it into the `token` variable inside the `.env` file.
 
-    2. Navigate to the `OAuth2` page and copy the `CLIENT ID`. 
+    2. Paste your [MongoDB](https://www.mongodb.com) connection string into the 'MONGODBURL' variable inside the `.env` file.
+
+    3. Navigate to the `OAuth2` page and copy the `CLIENT ID`. 
     Paste it into the `clientId` variable inside the `handleCommands.js` file.
 
-    3. Navigate to your discord server, enable developer mode and right click the dropdown beside the server name. 
+    4. Navigate to your discord server, enable developer mode and right click the dropdown beside the server name. 
     Click `Copy Server ID` and paste it into the `guildId` variable inside the `handleCommands.js` file.
     
-    4. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
+    5. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
 
-    5. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
+    6. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
     for instance,
     ```js
     npm i discord.js
     ```
     
-    6. Click the `run` button inside the terminal and type `node src/index.js` or `node .` to turn the bot online.
+    7. Click the `run` button inside the terminal and type `node src/index.js` or `node .` to turn the bot online.
         
 ## Contributing
 We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
