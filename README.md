@@ -35,12 +35,9 @@ A multipurpose discord bot based on discord.js v14.
        3. Click `Star` to support development.
        4. Click `Fork` to copy all code to your own repository.
    
-    2. Click on the green button marked `Code`. From the drop-down that appears,
-    click `Download ZIP` to download the entire repository as a ZIP folder.
+    2. Click the `Code` button. From the drop-down that appears, click `Download ZIP` to download the entire repository as a ZIP folder.
 
-    3. Extract the files to a new folder.
-
-    4. Right click the folder and open with [Visual Studio Code](https://code.visualstudio.com/download).
+    3. Extract the files to a new folder and open it with [Visual Studio Code](https://code.visualstudio.com/download).
 
 
 - **Obtain Discord Bot Token**
@@ -76,28 +73,22 @@ A multipurpose discord bot based on discord.js v14.
     7. Copy your connection string and replace `<password>` with the password for the database user that you created earlier.
 
 
-- **Project Execution**:
+- **Project Execution**
 
     1. Navigate to the `Bot` page on the [Discord Developer Portal](https://discord.com/developers/applications) and click `Reset Token`.
-    Paste it into the `token` variable inside the `.env` file.
-
-    2. Paste your [MongoDB](https://www.mongodb.com) connection string into the 'MONGODBURL' variable inside the `.env` file.
-
-    3. Navigate to the `OAuth2` page and copy the `CLIENT ID`. 
-    Paste it into the `clientId` variable inside the `handleCommands.js` file.
-
-    4. Navigate to your discord server, enable developer mode and right click the dropdown beside the server name. 
-    Click `Copy Server ID` and paste it into the `guildId` variable inside the `handleCommands.js` file.
-    
-    5. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
-
-    6. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
+    2. Paste your bot token into the `token` variable inside the `.env` file.
+    3. Paste your [MongoDB](https://www.mongodb.com) connection string into the `MONGODBURL` variable inside the `.env` file.
+    4. Navigate to the `OAuth2` page and copy the `CLIENT ID`. 
+    5. Paste your client ID into the `clientId` variable inside the `handleCommands.js` file.
+    6. Navigate to your discord server, enable developer mode and right click the dropdown beside the server name. 
+    7. Click `Copy Server ID` and paste it into the `guildId` variable inside the `handleCommands.js` file.
+    8. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
+    9. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
     for instance,
     ```js
     npm i discord.js
     ```
-    
-    7. Click the `run` button inside the terminal and type `node src/index.js` or `node .` to turn the bot online.
+    10. Click the `run` button inside the terminal and type `node src/index.js` or `node .` to turn the bot online.
         
 ## Contributing
 We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
