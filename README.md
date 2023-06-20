@@ -1,4 +1,4 @@
-<img align="center" alt="Nub Bot" src="https://cdn.discordapp.com/attachments/819912862595416077/1116056718686818395/Nub_Bot.png">
+<img align="center" alt="Nub Bot banner" src="https://cdn.discordapp.com/attachments/1042013863886999602/1120739432694296697/Nub_Bot.png">
 
 <p align="center">
 <img align="center" alt="GitHub issues" src="https://img.shields.io/github/issues/TheLegenDev/Nub-Bot?style=for-the-badge"> 
