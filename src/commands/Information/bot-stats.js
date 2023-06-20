@@ -23,15 +23,10 @@ module.exports = {
     "Disconnecting"
     ];
 
-   await client.user.fetch();
-
+       await client.user.fetch();
        await client.application.fetch();
 
-       
-
        const getChannelTypeSize = type => client.channels.cache.filter(channel => type.includes(channel.type)).size;
-
-       
 
     await interaction.editReply({embeds: [
 

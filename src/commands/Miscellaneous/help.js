@@ -4,7 +4,16 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName('help')
     .setDescription(`Learn more regarding the bot and it's features.`),
-    async execute(interaction) {
+
+     /**
+    * @param {ChatInputCommandInteraction} interaction 
+    * @param {Client} client 
+    */
+
+    async execute(interaction, client) {
+
+        await client.user.fetch();
+        await client.application.fetch();
  
         const helprow1 = new ActionRowBuilder()
         .addComponents(
@@ -32,7 +41,7 @@ module.exports = {
         const centerembed = new EmbedBuilder()
         .setColor('#2f3136')
         .setDescription(`**Nub Bot** offers a multitude of diversified features to enchance the experience for you and your server. Listed down below are some of the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :moneybag: **Economy** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon2:1100724446525935616> :arrow_double_up: **Level** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
-        .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
         .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.member.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
 

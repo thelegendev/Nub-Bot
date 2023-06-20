@@ -2,8 +2,16 @@ const { ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle, E
  
 module.exports = {
 name: "interactionCreate",
+
+ /**
+    * @param {ChatInputCommandInteraction} interaction 
+    * @param {Client} client 
+    */
  
-async execute(interaction) {
+async execute(interaction, client) {
+
+    await client.user.fetch();
+    await client.application.fetch();
  
     const helprow2 = new ActionRowBuilder()
         .addComponents(
@@ -35,7 +43,7 @@ async execute(interaction) {
         const centerembed = new EmbedBuilder()
         .setColor('#2f3136')
         .setDescription(`**Nub Bot** offers a multitude of diversified features to enchance the experience for you and your server. Listed down below are some of the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :moneybag: **Economy** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon2:1100724446525935616> :arrow_double_up: **Level** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
-        .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+        .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
         .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.member.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
 
@@ -77,7 +85,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /reminder`, value: `<:icon3:1100724523281694781> Configure your reminders.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /translate`, value: `<:icon3:1100724523281694781> Translate your message to a different language.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /warnings`, value: `<:icon3:1100724523281694781> Shows an user's warnings within the server.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
  
                 const commandpage2 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -99,7 +107,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /unmute`, value: `<:icon3:1100724523281694781> Untime out an user within the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /verify`, value: `<:icon3:1100724523281694781> Configure the verification system.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /warn`, value: `<:icon3:1100724523281694781> Warn an user within the server.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage3 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -119,7 +127,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /pp`, value: `<:icon3:1100724523281694781> Better not talk about it.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /sound-board`, value: `<:icon3:1100724523281694781> Play the specified sound in vc.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /waifu`, value: `<:icon3:1100724523281694781> Get a random waifu image.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage4 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -140,7 +148,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /snake`, value: `<:icon3:1100724523281694781> Play a game of snake.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /ttt`, value: `<:icon3:1100724523281694781> Play a game of tic tac toe.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /wordle`, value: `<:icon3:1100724523281694781> Play a game of wordle.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage5 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -155,7 +163,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /gamble`, value: `<:icon3:1100724523281694781> Gamble to win or lose money.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /withdraw`, value: `<:icon3:1100724523281694781> Withdraw money from your bank to wallet.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /work`, value: `<:icon3:1100724523281694781> Work to earn money.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage6 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -169,7 +177,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /react-role`, value: `<:icon3:1100724523281694781> Setup a reaction role system in the specified channel.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /steal`, value: `<:icon3:1100724523281694781> Add the specified emoji to the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /tts`, value: `<:icon3:1100724523281694781> Send a text to speech message.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage7 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -179,7 +187,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /role-info`, value: `<:icon3:1100724523281694781> Receive information about a role in the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /server-info`, value: `<:icon3:1100724523281694781> Receive information about the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /user-info`, value: `<:icon3:1100724523281694781> Receive information about an user in the server.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage8 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -189,7 +197,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /xp-leaderboard`, value: `<:icon3:1100724523281694781> Check the server's xp leaderboard.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /xp-reset`, value: `<:icon3:1100724523281694781> Reset all of the server user's xp & levels.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /xpuser-reset`, value: `<:icon3:1100724523281694781> Reset an user's xp & rank.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage9 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -197,7 +205,7 @@ async execute(interaction) {
                 .setTitle(':gear: **__Miscellaneous__**')
                 .addFields({ name: `<:icon4:1100728456448323595> /help`, value: `<:icon3:1100724523281694781> Learn more regarding the bot and it's features.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /ping`, value: `<:icon3:1100724523281694781> Check the bot's latency.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage10 = new EmbedBuilder()
                 .setColor('#2f3136')
@@ -206,7 +214,7 @@ async execute(interaction) {
                 .addFields({ name: `<:icon4:1100728456448323595> /leave-server`, value: `<:icon3:1100724523281694781> Make the bot leave a server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /server-list`, value: `<:icon3:1100724523281694781> Shows all the servers the bot is currently in.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /shutdown`, value: `<:icon3:1100724523281694781> Shuts down the bot.` })
-                .setThumbnail('https://cdn.discordapp.com/icons/999278158706647070/44a365242aef5b3b0b178cb782207729.webp?size=1024')
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
  
                 const commandbuttons1 = new ActionRowBuilder()
                 .addComponents(
