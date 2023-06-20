@@ -62,7 +62,7 @@ A multipurpose discord bot based on discord.js v14.
         6. Click `Continue` > `Authorize`.
 
 
-- **Obtain MongoDB connection string**
+- **Obtain MongoDB Connection String**
 
     1. Sign up / Sign in to [MongoDB](https://www.mongodb.com).
     2. Choose your preferred cloud database plan.
