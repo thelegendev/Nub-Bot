@@ -2,7 +2,7 @@
 
 <p align="center">
 <img align="center" alt="GitHub issues" src="https://img.shields.io/github/issues/TheLegenDev/Nub-Bot?style=for-the-badge"> 
-<img align="center" alt="GitHub" src="https://img.shields.io/github/license/TheLegenDev/Nub-Bot?style=for-the-badge">
+<img align="center" alt="GitHub license" src="https://img.shields.io/github/license/TheLegenDev/Nub-Bot?style=for-the-badge">
 </p>
 
 <p align="center">
@@ -10,7 +10,7 @@ A multipurpose discord bot based on discord.js v14.
 </p>
 
 > **Warning**
-> If you plan to host a public instance of our bot by using our source code, you are not allowed to use neither our bot's username nor its app icon.
+> If you plan to host a public instance of our bot by using our source code, you are not allowed to use either our bot's username or its app icon.
 
 > **Note**
 > If you plan to use our source code for your project, it'd be appreciated if you would credit us; preferably within your bot.
