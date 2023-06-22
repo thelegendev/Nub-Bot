@@ -97,4 +97,4 @@ We're open to accepting contributions. Please refer to our [contributing guide](
 Join us on [Discord](https://discord.gg/URZnqtEbsQ) to get in touch today!
 
 ## License
-Released under the terms of [Apache 2.0](https://github.com/TheLegenDev/Nub-Bot/blob/main/LICENSE) license.
+Released under the terms of [GNU General Public License v3.0](https://github.com/TheLegenDev/Nub-Bot/blob/main/LICENSE) license.
