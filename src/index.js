@@ -482,6 +482,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
 // POLL SYSTEM
 
+// Legend Ur Dum..
+
+const pollschema = require('./Schemas.js/pollSchema');
+
 client.on(Events.InteractionCreate, async i => {
  
     if (!i.guild) return;
