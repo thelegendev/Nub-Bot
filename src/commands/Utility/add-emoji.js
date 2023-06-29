@@ -8,7 +8,7 @@ module.exports = {
     .addStringOption(option => option.setName('name').setDescription(`Specified name will be the emoji's name`).setRequired(true).setMinLength(2).setMaxLength(30)),
     async execute(interaction) {
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageEmojisAndStickers)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
  
         const name = interaction.options.getString('name');
         const upload = interaction.options.getAttachment('emoji');
