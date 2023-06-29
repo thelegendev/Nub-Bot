@@ -36,6 +36,7 @@ module.exports = {
         .setColor('#2f3136')
         .setTitle(`Definition of **${result.word}**`)
         .addFields(embedInfo)
+        .setFooter({ text: `Word Defined`})
  
         await interaction.reply({ embeds: [embed] });
     }

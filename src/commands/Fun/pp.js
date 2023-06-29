@@ -15,7 +15,7 @@ module.exports = {
         const ppEmbed = new EmbedBuilder()
             .setColor('Random')
             .setTitle(`${interaction.user.username}'s pp size ;-;`)
-            .setDescription(`Your pp size is  ${ppMain}D`);
+            .setDescription(`Your pp size is  ${ppMain}D`)
 
         await interaction.reply({ embeds: [ppEmbed] });
     },

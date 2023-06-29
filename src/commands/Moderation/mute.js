@@ -43,19 +43,20 @@ module.exports = {
         if (timeMember.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.reply({content: "You cannot timeout staff members or people with the Administrator permission!", ephemeral: true})
  
         let reason = interaction.options.getString('reason');
-        if (!reason) reason = "No reason given."
+        if (!reason) reason = "No reason provided"
  
         await timeMember.timeout(duration * 1000, reason)
  
             const minEmbed = new EmbedBuilder()
             .setColor("#2f3136")
-            .setDescription(`:white_check_mark: ${timeUser.tag} has been **timed out** for ${duration / 60} minute(s) | ${reason}`)
+            .setDescription(`**${timeUser.tag}** has been timed out for **${duration / 60} minute(s)**. \nReason: **${reason}**`)
+            .setFooter({ text: `User Timed Out`})
             .setTimestamp()
  
             const dmEmbed = new EmbedBuilder()
-            .setColor(0x0099FF)
+            .setColor("#2f3136")
             .setTitle('Moderation Notice')
-            .setDescription(` \n ${timeUser.tag}, \n \`You have been muted in ${guild.name}\` \n \n \n **Reason:** \n ${reason} \n \n **Responsible Moderator:** \n ${interaction.user.tag} | (<@${interaction.user.id}>:${interaction.user.id})`)
+            .setDescription(` \n ${timeUser.tag}, \n \`You have been muted in ${guild.name}\` \n \n \n Reason: \n ${reason} \n \n Responsible Moderator: \n ${interaction.user.tag}`)
  
             await timeMember.send({ embeds: [dmEmbed] }).catch(err => {
                 return;

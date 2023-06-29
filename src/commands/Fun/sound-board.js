@@ -104,14 +104,11 @@ module.exports = {
     audioPlayer.play(audioResource);
 
     const embedMessage = new EmbedBuilder()
-
-      .setColor('Green')
+      .setColor('#2f3136')
       .setImage('https://cdn.dribbble.com/users/1614722/screenshots/4419914/soundboard_animatie__zwart_.gif')
-    
       .setTitle('Playing Sound')
-
       .setDescription(`Playing sound: ${sound}`)
-
+      .setFooter({ text: `Sound Played`})
       .setTimestamp();
 
     const message = await interaction.reply({ embeds: [embedMessage], fetchReply: true,ephemeral:true });

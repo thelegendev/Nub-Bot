@@ -16,6 +16,7 @@ module.exports = {
             {name: "Requested by:", value: `<@${interaction.user.id}>`}
         )
         .setColor("Random")
+        .setFooter({ text: `Dice Rolled`})
  
         return interaction.reply({
             embeds: [embed]

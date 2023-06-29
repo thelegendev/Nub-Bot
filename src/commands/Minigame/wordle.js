@@ -4,7 +4,7 @@ const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('wordle')
-    .setDescription(`Play a game of Wordle!`),
+    .setDescription(`Play a game of wordle.`),
 
     async execute (interaction) {
  

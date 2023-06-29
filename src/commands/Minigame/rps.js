@@ -4,7 +4,7 @@ const { RockPaperScissors } = require("discord-gamecord");
 module.exports = {
     data: new SlashCommandBuilder()
       .setName('rps')
-      .setDescription('Play a game of Rock Paper Scissors!')
+      .setDescription('Play a game of rock paper scissors.')
       .addUserOption(option => 
         option.setName('opponent')
           .setDescription('Specified user will be your opponent.')

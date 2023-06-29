@@ -42,7 +42,7 @@ async execute(interaction, client) {
         
         const centerembed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setDescription(`**Nub Bot** offers a multitude of diversified features to enhance the experience for you and your server. Listed down below are the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :moneybag: **Economy** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon2:1100724446525935616> :arrow_double_up: **Level** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
+        .setDescription(`**Nub Bot** offers a multitude of diversified features to enhance the experience for you and your server. Listed down below are the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon2:1100724446525935616> :arrow_double_up: **Level** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
         .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.member.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
@@ -57,7 +57,12 @@ async execute(interaction, client) {
             new ButtonBuilder()
             .setLabel('Bot Invite')
             .setStyle(ButtonStyle.Link)
-            .setURL("https://discord.com/api/oauth2/authorize?client_id=861922247974977536&permissions=8&scope=bot%20applications.commands")
+            .setURL("https://discord.com/api/oauth2/authorize?client_id=861922247974977536&permissions=8&scope=bot%20applications.commands"),
+
+            new ButtonBuilder()
+            .setLabel('Vote on Top.gg')
+            .setStyle(ButtonStyle.Link)
+            .setURL("https://top.gg/bot/861922247974977536/vote")
         )
  
         interaction.values.forEach(async (value) => {
@@ -78,7 +83,6 @@ async execute(interaction, client) {
                 .addFields({ name: `<:icon4:1100728456448323595> /calculator`, value: `<:icon3:1100724523281694781> Use a realistic calculator.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /dictionary`, value: `<:icon3:1100724523281694781> Search any word in the dictionary.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /giveaway`, value: `<:icon3:1100724523281694781> Configure your giveaway(s).` })
-                .addFields({ name: `<:icon4:1100728456448323595> /google`, value: `<:icon3:1100724523281694781> Search anything on Google.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /invites`, value: `<:icon3:1100724523281694781> Shows an user's invite count within the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /lyrics`, value: `<:icon3:1100724523281694781> Get lyrics for any song.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /nitro`, value: `<:icon3:1100724523281694781> Generates a nitro link.` })
@@ -91,10 +95,9 @@ async execute(interaction, client) {
                 .setColor('#2f3136')
                 .setTimestamp()
                 .setTitle(':shield: **__Moderation__**')
-                .addFields({ name: `<:icon4:1100728456448323595> /automod`, value: `<:icon3:1100724523281694781> Setup the automod system.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /automod`, value: `<:icon3:1100724523281694781> Configure the automod system.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /ban`, value: `<:icon3:1100724523281694781> Ban an user from the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /clear-warn`, value: `<:icon3:1100724523281694781> Clear an user's warnings.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /invite-logger`, value: `<:icon3:1100724523281694781> Setup the invite logger system.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /kick`, value: `<:icon3:1100724523281694781> Kick an user from the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /lock`, value: `<:icon3:1100724523281694781> Lock the specified channel.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /logs`, value: `<:icon3:1100724523281694781> Configure the logging system.` })
@@ -114,19 +117,19 @@ async execute(interaction, client) {
                 .setTimestamp()
                 .setTitle(':star_struck: **__Fun__**')
                 .addFields({ name: `<:icon4:1100728456448323595> /8ball`, value: `<:icon3:1100724523281694781> Play the 8ball game.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /advice`, value: `<:icon3:1100724523281694781> Get some advice.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /advice`, value: `<:icon3:1100724523281694781> Get some random advice.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /ascii`, value: `<:icon3:1100724523281694781> Converts given text to ascii.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /coin-flip`, value: `<:icon3:1100724523281694781> Flip a coin.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /dice`, value: `<:icon3:1100724523281694781> Roll a dice.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /find-game`, value: `<:icon3:1100724523281694781> Find a game you can enjoy.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /hack`, value: `<:icon3:1100724523281694781> Hack the mentioned user.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /how-gae`, value: `<:icon3:1100724523281694781> Results are accurate, no questions asked.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /husbando`, value: `<:icon3:1100724523281694781> Get a random husbando image.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /husbando`, value: `<:icon3:1100724523281694781> Generate a random husbando image.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /impersonate`, value: `<:icon3:1100724523281694781> Impersonate an user with a webhook.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /meme`, value: `<:icon3:1100724523281694781> Get a meme` })
+                .addFields({ name: `<:icon4:1100728456448323595> /meme`, value: `<:icon3:1100724523281694781> Generate a random meme.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /pp`, value: `<:icon3:1100724523281694781> Better not talk about it.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /sound-board`, value: `<:icon3:1100724523281694781> Play the specified sound in vc.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /waifu`, value: `<:icon3:1100724523281694781> Get a random waifu image.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /waifu`, value: `<:icon3:1100724523281694781> Generate a random waifu image.` })
                 .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage4 = new EmbedBuilder()
@@ -153,21 +156,6 @@ async execute(interaction, client) {
                 const commandpage5 = new EmbedBuilder()
                 .setColor('#2f3136')
                 .setTimestamp()
-                .setTitle(':moneybag: **__Economy__**')
-                .addFields({ name: `<:icon4:1100728456448323595> /beg`, value: `<:icon3:1100724523281694781> Beg to get money.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /daily`, value: `<:icon3:1100724523281694781> Claim your daily boost.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /deposit`, value: `<:icon3:1100724523281694781> Deposit money from your wallet to bank.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /economy-account`, value: `<:icon3:1100724523281694781> View your economy account balance and info.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /economy-create`, value: `<:icon3:1100724523281694781> Create an economy account.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /economy-delete`, value: `<:icon3:1100724523281694781> Delete an economy account.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /gamble`, value: `<:icon3:1100724523281694781> Gamble to win or lose money.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /withdraw`, value: `<:icon3:1100724523281694781> Withdraw money from your bank to wallet.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /work`, value: `<:icon3:1100724523281694781> Work to earn money.` })
-                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-
-                const commandpage6 = new EmbedBuilder()
-                .setColor('#2f3136')
-                .setTimestamp()
                 .setTitle(':tools: **__Utility__**')
                 .addFields({ name: `<:icon4:1100728456448323595> /add-emoji`, value: `<:icon3:1100724523281694781> Specified emoji will be added to the server.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /add-sticker`, value: `<:icon3:1100724523281694781> Specified file will be added as a sticker in the server.` })
@@ -176,30 +164,29 @@ async execute(interaction, client) {
                 .addFields({ name: `<:icon4:1100728456448323595> /poll`, value: `<:icon3:1100724523281694781> Host a poll for all users to vote for.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /react-role`, value: `<:icon3:1100724523281694781> Setup a reaction role system in the specified channel.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /steal`, value: `<:icon3:1100724523281694781> Add the specified emoji to the server.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /tts`, value: `<:icon3:1100724523281694781> Send a text to speech message.` })
+                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
+
+                const commandpage6 = new EmbedBuilder()
+                .setColor('#2f3136')
+                .setTimestamp()
+                .setTitle(':information_source: **__Information__**')
+                .addFields({ name: `<:icon4:1100728456448323595> /bot-info`, value: `<:icon3:1100724523281694781> Receive information regarding the bot.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /role-info`, value: `<:icon3:1100724523281694781> Receive information regarding a role in the server.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /server-info`, value: `<:icon3:1100724523281694781> Receive information regarding the server.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /user-info`, value: `<:icon3:1100724523281694781> Receive information regarding an user in the server.` })
                 .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage7 = new EmbedBuilder()
                 .setColor('#2f3136')
                 .setTimestamp()
-                .setTitle(':information_source: **__Information__**')
-                .addFields({ name: `<:icon4:1100728456448323595> /bot-stats`, value: `<:icon3:1100724523281694781> Receive some statistics about the bot.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /role-info`, value: `<:icon3:1100724523281694781> Receive information about a role in the server.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /server-info`, value: `<:icon3:1100724523281694781> Receive information about the server.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /user-info`, value: `<:icon3:1100724523281694781> Receive information about an user in the server.` })
+                .setTitle(':arrow_double_up: **__Level__**')
+                .addFields({ name: `<:icon4:1100728456448323595> /rank`, value: `<:icon3:1100724523281694781> Check an user's level/rank within the server.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /server-xp-reset`, value: `<:icon3:1100724523281694781> Reset all of the server user's xp.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /user-xp-reset`, value: `<:icon3:1100724523281694781> Reset an user's xp.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /xp-leaderboard`, value: `<:icon3:1100724523281694781> Check the server's xp leaderboard.` })
                 .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
                 const commandpage8 = new EmbedBuilder()
-                .setColor('#2f3136')
-                .setTimestamp()
-                .setTitle(':arrow_double_up: **__Level__**')
-                .addFields({ name: `<:icon4:1100728456448323595> /rank`, value: `<:icon3:1100724523281694781> Check an user's level/rank within the server.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /xp-leaderboard`, value: `<:icon3:1100724523281694781> Check the server's xp leaderboard.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /xp-reset`, value: `<:icon3:1100724523281694781> Reset all of the server user's xp & levels.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /xpuser-reset`, value: `<:icon3:1100724523281694781> Reset an user's xp & rank.` })
-                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
-
-                const commandpage9 = new EmbedBuilder()
                 .setColor('#2f3136')
                 .setTimestamp()
                 .setTitle(':gear: **__Miscellaneous__**')
@@ -207,20 +194,11 @@ async execute(interaction, client) {
                 .addFields({ name: `<:icon4:1100728456448323595> /ping`, value: `<:icon3:1100724523281694781> Check the bot's latency.` })
                 .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
 
-                const commandpage10 = new EmbedBuilder()
-                .setColor('#2f3136')
-                .setTimestamp()
-                .setTitle(':man_technologist: **__Developer__**')
-                .addFields({ name: `<:icon4:1100728456448323595> /leave-server`, value: `<:icon3:1100724523281694781> Make the bot leave a server.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /server-list`, value: `<:icon3:1100724523281694781> Shows all the servers the bot is currently in.` })
-                .addFields({ name: `<:icon4:1100728456448323595> /shutdown`, value: `<:icon3:1100724523281694781> Shuts down the bot.` })
-                .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
- 
                 const commandbuttons1 = new ActionRowBuilder()
                 .addComponents(
  
                     new ButtonBuilder()
-                    .setCustomId('first1')
+                    .setCustomId('pagefirst1')
                     .setLabel('◀◀')
                     .setDisabled(true)
                     .setStyle(ButtonStyle.Primary),
@@ -233,17 +211,18 @@ async execute(interaction, client) {
                     
                     new ButtonBuilder()
                     .setCustomId('spacer1')
-                    .setLabel('1/10')
+                    .setLabel('1/8')
                     .setDisabled(true)
                     .setStyle(ButtonStyle.Secondary),
  
                     new ButtonBuilder()
                     .setCustomId('pageright1')
                     .setLabel('▶')
+                    .setDisabled(false)
                     .setStyle(ButtonStyle.Primary),
 
                     new ButtonBuilder()
-                    .setCustomId('last1')
+                    .setCustomId('pagelast1')
                     .setLabel('▶▶')
                     .setDisabled(false)
                     .setStyle(ButtonStyle.Primary)
@@ -253,7 +232,7 @@ async execute(interaction, client) {
                     .addComponents(
  
                         new ButtonBuilder()
-                        .setCustomId('first2')
+                        .setCustomId('pagefirst2')
                         .setLabel('◀◀')
                         .setDisabled(true)
                         .setStyle(ButtonStyle.Primary),
@@ -266,7 +245,7 @@ async execute(interaction, client) {
                         
                         new ButtonBuilder()
                         .setCustomId('spacer2')
-                        .setLabel('2/10')
+                        .setLabel('2/8')
                         .setDisabled(true)
                         .setStyle(ButtonStyle.Secondary),
  
@@ -277,7 +256,7 @@ async execute(interaction, client) {
                         .setStyle(ButtonStyle.Primary),
 
                         new ButtonBuilder()
-                        .setCustomId('last2')
+                        .setCustomId('pagelast2')
                         .setLabel('▶▶')
                         .setDisabled(false)
                         .setStyle(ButtonStyle.Primary)
@@ -287,7 +266,7 @@ async execute(interaction, client) {
                     .addComponents(
 
                       new ButtonBuilder()
-                      .setCustomId('first3')
+                      .setCustomId('pagefirst3')
                       .setLabel('◀◀')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary),
@@ -300,7 +279,7 @@ async execute(interaction, client) {
                       
                       new ButtonBuilder()
                       .setCustomId('spacer3')
-                      .setLabel('3/10')
+                      .setLabel('3/8')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Secondary),
 
@@ -311,7 +290,7 @@ async execute(interaction, client) {
                       .setStyle(ButtonStyle.Primary),
 
                       new ButtonBuilder()
-                      .setCustomId('last3')
+                      .setCustomId('pagelast3')
                       .setLabel('▶▶')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary)
@@ -321,7 +300,7 @@ async execute(interaction, client) {
                     .addComponents(
 
                       new ButtonBuilder()
-                      .setCustomId('first4')
+                      .setCustomId('pagefirst4')
                       .setLabel('◀◀')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary),
@@ -334,7 +313,7 @@ async execute(interaction, client) {
                       
                       new ButtonBuilder()
                       .setCustomId('spacer4')
-                      .setLabel('4/10')
+                      .setLabel('4/8')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Secondary),
 
@@ -345,7 +324,7 @@ async execute(interaction, client) {
                       .setStyle(ButtonStyle.Primary),
 
                       new ButtonBuilder()
-                      .setCustomId('last4')
+                      .setCustomId('pagelast4')
                       .setLabel('▶▶')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary)
@@ -355,7 +334,7 @@ async execute(interaction, client) {
                     .addComponents(
 
                       new ButtonBuilder()
-                      .setCustomId('first5')
+                      .setCustomId('pagefirst5')
                       .setLabel('◀◀')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary),
@@ -368,7 +347,7 @@ async execute(interaction, client) {
                       
                       new ButtonBuilder()
                       .setCustomId('spacer5')
-                      .setLabel('5/10')
+                      .setLabel('5/8')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Secondary),
 
@@ -379,7 +358,7 @@ async execute(interaction, client) {
                       .setStyle(ButtonStyle.Primary),
 
                       new ButtonBuilder()
-                      .setCustomId('last5')
+                      .setCustomId('pagelast5')
                       .setLabel('▶▶')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary)
@@ -389,7 +368,7 @@ async execute(interaction, client) {
                     .addComponents(
 
                       new ButtonBuilder()
-                      .setCustomId('first6')
+                      .setCustomId('pagefirst6')
                       .setLabel('◀◀')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary),
@@ -402,7 +381,7 @@ async execute(interaction, client) {
                       
                       new ButtonBuilder()
                       .setCustomId('spacer6')
-                      .setLabel('6/10')
+                      .setLabel('6/8')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Secondary),
 
@@ -413,7 +392,7 @@ async execute(interaction, client) {
                       .setStyle(ButtonStyle.Primary),
                       
                       new ButtonBuilder()
-                      .setCustomId('last6')
+                      .setCustomId('pagelast6')
                       .setLabel('▶▶')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary)
@@ -423,7 +402,7 @@ async execute(interaction, client) {
                     .addComponents(
 
                       new ButtonBuilder()
-                      .setCustomId('first7')
+                      .setCustomId('pagefirst7')
                       .setLabel('◀◀')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary),
@@ -436,7 +415,7 @@ async execute(interaction, client) {
                       
                       new ButtonBuilder()
                       .setCustomId('spacer7')
-                      .setLabel('7/10')
+                      .setLabel('7/8')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Secondary),
 
@@ -447,9 +426,9 @@ async execute(interaction, client) {
                       .setStyle(ButtonStyle.Primary),
 
                       new ButtonBuilder()
-                      .setCustomId('last7')
+                      .setCustomId('pagelast7')
                       .setLabel('▶▶')
-                      .setDisabled(false)
+                      .setDisabled(true)
                       .setStyle(ButtonStyle.Primary)
                     ) 
 
@@ -457,7 +436,7 @@ async execute(interaction, client) {
                     .addComponents(
 
                       new ButtonBuilder()
-                      .setCustomId('first8')
+                      .setCustomId('pagefirst8')
                       .setLabel('◀◀')
                       .setDisabled(false)
                       .setStyle(ButtonStyle.Primary),
@@ -470,90 +449,22 @@ async execute(interaction, client) {
                       
                       new ButtonBuilder()
                       .setCustomId('spacer8')
-                      .setLabel('8/10')
+                      .setLabel('8/8')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Secondary),
 
                       new ButtonBuilder()
                       .setCustomId('pageright8')
-                      .setDisabled(false)
-                      .setLabel('▶')
-                      .setStyle(ButtonStyle.Primary),
-
-                      new ButtonBuilder()
-                      .setCustomId('last8')
-                      .setLabel('▶▶')
-                      .setDisabled(false)
-                      .setStyle(ButtonStyle.Primary)
-                    ) 
-
-                    const commandbuttons9 = new ActionRowBuilder()
-                    .addComponents(
-
-                      new ButtonBuilder()
-                      .setCustomId('first9')
-                      .setLabel('◀◀')
-                      .setDisabled(false)
-                      .setStyle(ButtonStyle.Primary),
-
-                      new ButtonBuilder()
-                      .setCustomId('pageleft9')
-                      .setLabel('◀')
-                      .setDisabled(false)
-                      .setStyle(ButtonStyle.Primary),
-                      
-                      new ButtonBuilder()
-                      .setCustomId('spacer9')
-                      .setLabel('9/10')
-                      .setDisabled(true)
-                      .setStyle(ButtonStyle.Secondary),
-
-                      new ButtonBuilder()
-                      .setCustomId('pageright9')
-                      .setDisabled(false)
-                      .setLabel('▶')
-                      .setStyle(ButtonStyle.Primary),
-
-                      new ButtonBuilder()
-                      .setCustomId('last9')
-                      .setLabel('▶▶')
-                      .setDisabled(true)
-                      .setStyle(ButtonStyle.Primary)
-                    ) 
-
-                    const commandbuttons10 = new ActionRowBuilder()
-                    .addComponents(
-
-                      new ButtonBuilder()
-                      .setCustomId('first10')
-                      .setLabel('◀◀')
-                      .setDisabled(false)
-                      .setStyle(ButtonStyle.Primary),
-
-                      new ButtonBuilder()
-                      .setCustomId('pageleft10')
-                      .setLabel('◀')
-                      .setDisabled(false)
-                      .setStyle(ButtonStyle.Primary),
-                      
-                      new ButtonBuilder()
-                      .setCustomId('spacer10')
-                      .setLabel('10/10')
-                      .setDisabled(true)
-                      .setStyle(ButtonStyle.Secondary),
-
-                      new ButtonBuilder()
-                      .setCustomId('pageright10')
                       .setDisabled(true)
                       .setLabel('▶')
                       .setStyle(ButtonStyle.Primary),
 
                       new ButtonBuilder()
-                      .setCustomId('last10')
+                      .setCustomId('pagelast8')
                       .setLabel('▶▶')
                       .setDisabled(true)
                       .setStyle(ButtonStyle.Primary)
-                    ) 
+                    )
  
                 interaction.update({ embeds: [commandpage1], components: [commandbuttons1] });
                 const commandsmessage = interaction.message;
@@ -561,13 +472,13 @@ async execute(interaction, client) {
  
                 collector.on('collect', async i => {
             
-                    if (i.customId === 'spacer10') {
+                    if (i.customId === 'spacer8') {
                         
                         return;
                 
                     }
                 
-                    if (i.customId === 'first1') {
+                    if (i.customId === 'pagefirst1') {
                 
                       await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
               
@@ -585,13 +496,13 @@ async execute(interaction, client) {
                 
                     }
 
-                    if (i.customId === 'last1') {
+                    if (i.customId === 'pagelast1') {
                 
-                      await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+                      await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
               
                     }
 
-                    if (i.customId === 'first2') {
+                    if (i.customId === 'pagefirst2') {
                 
                       await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
               
@@ -609,13 +520,13 @@ async execute(interaction, client) {
                 
                     }
 
-                    if (i.customId === 'last2') {
+                    if (i.customId === 'pagelast2') {
                 
-                      await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+                      await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
               
                     }
 
-                  if (i.customId === 'first3') {
+                  if (i.customId === 'pagefirst3') {
                 
                     await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
             
@@ -633,13 +544,13 @@ async execute(interaction, client) {
               
                   }
 
-                  if (i.customId === 'last3') {
+                  if (i.customId === 'pagelast3') {
                 
-                    await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+                    await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
             
                   }
                 
-                if (i.customId === 'first4') {
+                if (i.customId === 'pagefirst4') {
                 
                   await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
           
@@ -657,13 +568,13 @@ async execute(interaction, client) {
             
                 }
 
-                if (i.customId === 'last4') {
+                if (i.customId === 'pagelast4') {
                 
-                  await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+                  await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
           
                 }
 
-              if (i.customId === 'first5') {
+              if (i.customId === 'pagefirst5') {
                 
                 await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
         
@@ -681,13 +592,13 @@ async execute(interaction, client) {
           
               }
 
-              if (i.customId === 'last5') {
+              if (i.customId === 'pagelast5') {
                 
-                await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+                await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
         
               }
 
-            if (i.customId === 'first6') {
+            if (i.customId === 'pagefirst6') {
                 
               await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
       
@@ -705,13 +616,13 @@ async execute(interaction, client) {
         
             }
 
-            if (i.customId === 'last6') {
+            if (i.customId === 'pagelast6') {
                 
-              await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+              await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
       
             }
 
-          if (i.customId === 'first7') {
+          if (i.customId === 'pagefirst7') {
                 
             await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
     
@@ -729,13 +640,13 @@ async execute(interaction, client) {
       
           }
 
-          if (i.customId === 'last7') {
+          if (i.customId === 'pagelast7') {
                 
-            await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+            await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
     
           }
 
-        if (i.customId === 'first8') {
+        if (i.customId === 'pagefirst8') {
                 
           await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
   
@@ -749,63 +660,15 @@ async execute(interaction, client) {
     
         if (i.customId === 'pageright8') {
     
-            await i.update({ embeds: [commandpage9], components: [commandbuttons9] });
+            await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
     
         }
 
-        if (i.customId === 'last8') {
+        if (i.customId === 'pagelast8') {
                 
-          await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
+          await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
   
         }
-
-      if (i.customId === 'first9') {
-                
-        await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
-
-    }
-
-      if (i.customId === 'pageleft9') {
-  
-        await i.update({ embeds: [commandpage8], components: [commandbuttons8] });
-
-      }
-  
-      if (i.customId === 'pageright9') {
-  
-          await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
-  
-      }
-
-      if (i.customId === 'last9') {
-                
-        await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
-
-      }
-
-    if (i.customId === 'first10') {
-                
-      await i.update({ embeds: [commandpage1], components: [commandbuttons1] });
-
-  }
-
-    if (i.customId === 'pageleft10') {
-
-      await i.update({ embeds: [commandpage9], components: [commandbuttons9] });
-
-    }
-
-    if (i.customId === 'pageright10') {
-
-        await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
-
-    }
-
-    if (i.customId === 'last10') {
-                
-      await i.update({ embeds: [commandpage10], components: [commandbuttons10] });
-
-    }
 
 
                 })

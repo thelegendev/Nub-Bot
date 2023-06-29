@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { EmbedBuilder, DiscordAPIError } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const levelSchema = require(`../../Schemas.js/levelSchema`)
  
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
         
         const embed1 = new EmbedBuilder()
         .setColor("#2f3136")
-        .setDescription(`:x: No one is on the leaderboard yet...`)
+        .setDescription(`No one is on the leaderboard yet...`)
         if (!Data) return await interaction.reply({ embeds: [embed1]})
  
             await interaction.deferReply()
@@ -37,7 +37,7 @@ module.exports = {
  
                     const embed = new EmbedBuilder()
                         .setColor("#2f3136")
-                        .setTitle(`${interaction.guild.name}'s XP Leaderboard:`)
+                        .setTitle(`${interaction.guild.name}'s XP Leaderboard`)
                         .setDescription(`\`\`\`${text}\`\`\``)
                         .setTimestamp()
                         .setFooter({ text: `XP Leaderboard` })

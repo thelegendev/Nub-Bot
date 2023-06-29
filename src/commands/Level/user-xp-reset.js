@@ -4,14 +4,14 @@ const levelSchema = require(`../../Schemas.js/levelSchema`);
  
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName('xpuser-reset')
-    .setDescription(`Reset an user's xp & rank.`)
+    .setName('user-xp-reset')
+    .setDescription(`Reset an user's xp.`)
     .addUserOption(option => option.setName("user").setDescription(`The user you want to reset the xp of`).setRequired(true)),
     async execute(interaction, client) {
  
                 const perm = new EmbedBuilder()
                 .setColor("#2f3136")
-                .setDescription(`:x: You don't have permission to reset xp levels in this server`)
+                .setDescription(`You don't have permission to reset xp levels in this server`)
                 if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ embeds: [perm], ephemeral: true })
  
                 const { guildId } = interaction;
@@ -23,7 +23,8 @@ module.exports = {
                 levelSchema.deleteMany({ Guild: guildId, User: target.id}, async (err, data) => {
  
                     embed.setColor("#2f3136")
-                    .setDescription(`:white_check_mark: ${target.tag}'s xp has been reset!`)
+                    .setDescription(`${target.tag}'s xp has been reset!`)
+                    .setFooter({ text: `User XP reset`})
  
                     return interaction.reply({ embeds: [embed] });
                 })

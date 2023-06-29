@@ -14,7 +14,7 @@ module.exports = {
         const role2 = interaction.options.getRole(`role2`);
         const role3 = interaction.options.getRole(`role3`);
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ content: "You must have admin perms to create a reaction role message", ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageRoles)) return await interaction.reply({ content: "You **do not** have the permission to do that!", ephemeral: true});
  
         const button = new ActionRowBuilder()
         .addComponents(
@@ -38,6 +38,7 @@ module.exports = {
         .setColor("#2f3136")
         .setTitle(`Reaction Roles`)
         .setDescription(`React with the buttons below to get the specified roles! \n (${role1}, ${role2}, ${role3})`)
+        .setTimestamp()
  
         await interaction.reply({ embeds: [embed], components: [button] });
  

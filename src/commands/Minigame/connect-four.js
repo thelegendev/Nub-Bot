@@ -4,7 +4,7 @@ const { Connect4 } = require("discord-gamecord");
     module.exports = {
         data: new SlashCommandBuilder()
           .setName('connect-four')
-          .setDescription('Play a game of Connect Four!')
+          .setDescription('Play a game of connect four.')
           .addUserOption(option => 
             option.setName('opponent')
               .setDescription('Specified user will be your opponent.')
@@ -12,8 +12,8 @@ const { Connect4 } = require("discord-gamecord");
 
   async execute(interaction) {
     const enemy = interaction.options.getUser('opponent');
-    if (interaction.user.id === enemy.id) return await interaction.reply({ content: `You **cannot** play with yourself, silly goose...`, ephemeral: true});
-    if (enemy.bot) return await interaction.reply({ content: `You **cannot** play with a bot, silly goose...`, ephemeral: true});
+    if (interaction.user.id === enemy.id) return await interaction.reply({ content: `You **cannot** play with yourself.`, ephemeral: true});
+    if (enemy.bot) return await interaction.reply({ content: `You **cannot** play with a bot.`, ephemeral: true});
 
     const game = new Connect4({
       message: interaction,

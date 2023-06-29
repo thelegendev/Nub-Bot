@@ -17,7 +17,6 @@ module.exports = {
       embed
         .setColor('#2f3136')
         .setTitle(`${data.data.title}`)
-        
         .setThumbnail(data.data.thumbnail.genius)
         .setFooter({text:`Song by ${data.data.author}`})
         .setDescription(`${data.data.lyrics.slice(0, 4096)}`);
@@ -25,7 +24,7 @@ module.exports = {
       await interaction.editReply({ embeds: [embed] });
     }).catch(() => {
       embed
-        .setColor('Red')
+        .setColor('#2f3136')
         .setDescription(`Couldn't find any song with that title`);
       return interaction.editReply({ embeds: [embed], ephemeral: true });
     });

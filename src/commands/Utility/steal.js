@@ -10,7 +10,7 @@ module.exports = {
     .addStringOption(option => option.setName('name').setDescription('The name for your emoji').setRequired(true)),
     async execute(interaction) {
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ content: "You must be a Administrator and your role must have the **Administrator** permission to perform this action.", ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return await interaction.reply({ content: "You **do not** have the permission to do that!", ephemeral: true});
  
         let emoji = interaction.options.getString('emoji')?.trim();
         const name = interaction.options.getString('name');
@@ -41,7 +41,9 @@ module.exports = {
         .then(emoji => {
             const embed = new EmbedBuilder()
             .setColor("#2f3136")
-            .setDescription(`Added ${emoji}, with the name ${name}`)
+            .setDescription(`Added ${emoji} as **${name}**`)
+            .setFooter({ text: `Emoji Added`})
+            .setTimestamp()
  
             return interaction.reply({ embeds: [embed] });
         }).catch(err => {

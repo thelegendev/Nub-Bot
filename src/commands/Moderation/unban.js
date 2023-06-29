@@ -13,14 +13,15 @@ module.exports = {
         const reason = interaction.options.getString('reason') || 'No Reason Provided';
         let guild = await interaction.guild.fetch();
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
-        if (interaction.member.id === target.id) return await interaction.reply({ content: 'You **cannot** use the hammer on yourself, silly goose...'});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return await interaction.reply({ content: 'You **do not** have the permission to do that.', ephemeral: true});
+        if (interaction.member.id === target.id) return await interaction.reply({ content: 'You **cannot** unban yourself.'});
  
-        if (!reason) reason = 'No reason provided :('
+        if (!reason) reason = 'No reason provided'
  
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
-        .setDescription(`:white_check_mark: Unbanned **${target.tag}** | **${reason}**.`)
+        .setDescription(`**${target.tag}** has been unbanned. \nReason: **${reason}**`)
+        .setFooter({ text: `User Unbanned`})
         .setTimestamp()
  
         await interaction.guild.bans.fetch() 

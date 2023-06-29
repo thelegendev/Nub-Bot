@@ -15,7 +15,8 @@ module.exports = {
  
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
-        .setDescription(`:white_check_mark: ${channel} has been unlocked.`) 
+        .setDescription(`${channel} has been unlocked.`)
+        .setFooter({ text: `Channel Unlocked`})
  
         await interaction.reply({ embeds: [embed] });
     }

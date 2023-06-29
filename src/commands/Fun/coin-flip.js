@@ -24,7 +24,8 @@ module.exports = {
 
       const embed = new EmbedBuilder()
         .setColor("Random")
-        .setTitle(`${emoji} Its a ${randomChoice}`);
+        .setTitle(`${emoji} Its a ${randomChoice}`)
+        .setFooter({ text: `Coin Flipped`})
 
       interaction.editReply({ embeds: [embed] });
     }, 1000);

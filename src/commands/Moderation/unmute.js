@@ -18,17 +18,20 @@ module.exports = {
         if (timeMember.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.reply({content: "You cannot untimeout staff members or people with the Administrator permission!", ephemeral: true})
  
         let reason = interaction.options.getString('reason');
-        if (!reason) reason = "No reason given."
+        if (!reason) reason = "No reason provided"
  
         await timeMember.timeout(null, reason)
  
             const minEmbed = new EmbedBuilder()
             .setColor("#2f3136")
-            .setDescription(`${timeUser.tag}'s timeout has been **removed** | ${reason}`)
+            .setDescription(`**${timeUser.tag}**'s timeout has been **removed**. \nReason: **${reason}**`)
+            .setFooter({ text: `User Untimed Out`})
+            .setTimestamp()
  
             const dmEmbed = new EmbedBuilder()
-            .setDescription(`You have been **untimed out** in ${interaction.guild.name} | ${reason}`)
-            .setColor(`#2f3136`)
+            .setColor("#2f3136")
+            .setTitle('Moderation Notice')
+            .setDescription(`Your timeout has been removed in ${interaction.guild.name} \n\n Reason: \n ${reason}`)
  
             await timeMember.send({ embeds: [dmEmbed] }).catch(err => {
                 return;

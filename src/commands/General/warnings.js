@@ -22,7 +22,9 @@ module.exports = {
  
             if (data) {
                 embed.setColor("#2f3136")
-                .setTitle(`${target.tag}'s Warnings`)
+                .setTitle(`${target.tag}'s warnings`)
+                .setFooter({ text: `Warnings Count`})
+                
                 .setDescription(`${data.Content.map(
                     (w, i) => 
                     `

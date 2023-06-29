@@ -124,6 +124,7 @@ module.exports = {
                 {name: "Game", value: `${name}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Rythm Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -140,6 +141,7 @@ module.exports = {
                 {name: "Game", value: `${FPS[choices]}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random FPS Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -156,6 +158,7 @@ module.exports = {
                 {name: "Game", value: `${FPS[choices]}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Arcade Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -173,6 +176,7 @@ module.exports = {
                 {name: "Game", value: `${Shooter[choices]}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Shooter Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -189,6 +193,7 @@ module.exports = {
                 {name: "Game", value: `${Military[choices]}`, inline: true},
                 {name: "Requested by:",value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Military Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -205,6 +210,7 @@ module.exports = {
                 {name: "Game", value: `${Action[choices]}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Action Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -221,6 +227,7 @@ module.exports = {
                 {name: "Game", value: `${Action[choices]}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Racing Game Found`})
  
             return interaction.reply({
                 embeds: [embed]
@@ -237,6 +244,7 @@ module.exports = {
                 {name: "Game", value: `${Adventure[choices]}`, inline: true},
                 {name: "Requested by:", value: `<@${interaction.user.id}>`, inline: true}
             )
+            .setFooter({ text: `Random Adventure Game Found`})
  
             return interaction.reply({
                 embeds: [embed]

@@ -16,8 +16,9 @@ module.exports = {
  
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
-        .setTitle("Invites")
-        .setDescription(`:white_check_mark: ${user.tag} has **${i}** invites.`)
+        .setTitle(`${user.tag}'s invites`)
+        .setDescription(`${user.tag} has **${i}** invites.`)
+        .setFooter({ text: `Invite Count`})
  
  
         await interaction.reply({ embeds: [embed] });

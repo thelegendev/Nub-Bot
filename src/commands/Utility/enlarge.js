@@ -38,7 +38,7 @@ module.exports = {
         .setDescription('**Your emoji has been enlarged!**')
         .setImage(emoji)
         .setTimestamp()
-        .setFooter({ text: 'Emoji Enlarged', iconURL: interaction.user.displayAvatarURL()})
+        .setFooter({ text: 'Emoji Enlarged' })
  
         await interaction.reply({ embeds: [embed] })
     }

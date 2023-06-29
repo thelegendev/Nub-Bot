@@ -20,12 +20,12 @@ module.exports = {
 
         if (interaction.member.id === warnMember.id) return interaction.reply({content: "You cannot warn yourself!", ephemeral: true})
 
-        if (warnMember.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.reply({content: "You cannot warn staff members or people with the Administrator permission!", ephemeral: true})
+        if (warnMember.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.reply({content: "You cannot warn staff members or people with the Administrator permission.", ephemeral: true})
  
         const { options, guildId, user } = interaction;
  
         const target = options.getUser("target");
-        const reason = options.getString("reason") || "No reason given";
+        const reason = options.getString("reason") || "No reason provided";
  
         const userTag = `${target.username}#${target.discriminator}`;
         let guild = await interaction.guild.fetch();
@@ -60,13 +60,14 @@ module.exports = {
         });
  
         const dmEmbed = new EmbedBuilder()
-        .setColor(0x0099FF)
+        .setColor("#2f3136")
         .setTitle('Moderation Notice')
-        .setDescription(` \n ${warnUser.tag}, \n \`You have been warned in ${guild.name}\` \n \n \n **Reason:** \n ${reason} \n \n **Responsible Moderator:** \n ${interaction.user.tag} | (<@${interaction.user.id}>:${interaction.user.id})`)
+        .setDescription(` \n ${warnUser.tag}, \n \`You have been warned in ${guild.name}\` \n \n \n Reason: \n ${reason} \n \n Responsible Moderator: \n ${interaction.user.tag}`)
  
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
-        .setDescription(`:white_check_mark: ${target.tag} has been **warned** | ${reason}`)
+        .setDescription(`**${target.tag}** has been warned. \nReason: **${reason}**`)
+        .setFooter
         .setTimestamp()
  
         target.send({ embeds: [dmEmbed] }).catch(err => {

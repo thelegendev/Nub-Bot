@@ -20,7 +20,7 @@ module.exports = {
  
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
-        .setDescription(`:x: ${member} has not gained any XP yet`)
+        .setDescription(`${member} has not gained any XP yet`)
         if (!Data) return await interaction.reply({ embeds: [embed] })
  
         await interaction.deferReply();
@@ -46,6 +46,7 @@ module.exports = {
         .setColor("#2f3136")
         .setTitle(`${member.user.username}'s Rank Card`)
         .setImage("attachment://rank.png")
+        .setFooter({ text: `${member.user.username}'s XP`})
  
         await interaction.editReply({ embeds: [embed2], files: [attachment] })
   

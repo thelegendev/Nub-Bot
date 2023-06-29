@@ -20,9 +20,9 @@ module.exports = {
 
             const embed = new EmbedBuilder()
             .setColor('#2f3136')
-            .setTimestamp()
             .setFooter({ text: `Ascii Art Generated`})
             .setDescription(`\`\`\`${data}\`\`\``)
+            .setTimestamp()
 
             interaction.reply({ embeds: [embed] });
         

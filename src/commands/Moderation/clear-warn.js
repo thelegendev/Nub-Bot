@@ -6,10 +6,10 @@ module.exports = {
     data: new SlashCommandBuilder()
     .setName(`clear-warn`)
     .setDescription(`Clear an user's warnings.`)
-    .addUserOption(option => option.setName('user').setDescription(`The user you want to clear the warnings of`).setRequired(true)),
+    .addUserOption(option => option.setName('user').setDescription(`The user you want to clear the warnings of.`).setRequired(true)),
     async execute(interaction) {
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.KickMembers)) return await interaction.reply({ content: "You dont have permission to clear peoples warnings", ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.KickMembers)) return await interaction.reply({ content: "You dont have permission to clear peoples warnings.", ephemeral: true});
  
         const { options, guildId, user } = interaction;
  
@@ -25,11 +25,12 @@ module.exports = {
                 await warningSchema.findOneAndDelete({ GuildID: guildId, UserID: target.id, UserTag: target.tag})
  
                 embed.setColor("#2f3136")
-                .setDescription(`:white_check_mark:  ${target.tag}'s warnings have been cleared`)
+                .setDescription(`${target.tag}'s warnings have been cleared.`)
+                .setFooter({ text: `User's Warnings Cleared`})
  
                 interaction.reply({ embeds: [embed] });
             } else {
-                interaction.reply({ content: `${target.tag} has no warnings to be cleared`, ephemeral: true})
+                interaction.reply({ content: `${target.tag} has no warnings to be cleared.`, ephemeral: true})
             }
         });
  

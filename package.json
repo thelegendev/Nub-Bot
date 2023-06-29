@@ -6,6 +6,7 @@
     "axios": "^1.3.4",
     "canvacord": "^5.4.8",
     "captcha-canvas": "^3.2.1",
+    "cpu-stat": "^2.0.1",
     "discord-gamecord": "^4.3.0",
     "discord-giveaways": "^6.0.1",
     "discord-html-transcripts": "^3.1.4",
@@ -26,6 +27,6 @@
     "test": "node src/index.js"
   },
   "author": "TheLegend",
-  "license": "Apache 2.0",
+  "license": "GNU General Public License v3.0",
   "description": "Nub Bot is a multipurpose discord bot that allows users to perform a multitude of diversified tasks within their discord servers. It is written in node.js and uses the discord.js library."
 }

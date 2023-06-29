@@ -38,7 +38,7 @@ module.exports = {
                 .setColor('#2f3136')
                 .setTitle(`${interaction.user.username} has gone AFK`)
                 .setDescription(`**Reason**: ${reason}`)
-                .setFooter({ text: `🌙 Someone went AFK`})              
+                .setFooter({ text: `Someone Went AFK`})
                 .setTimestamp()
  
                 interaction.reply({ content: `You are now **AFK**! \n Do **/afk remove** or type something in the chat to undo.`, ephemeral: true})
@@ -62,7 +62,7 @@ module.exports = {
                 .setColor('#2f3136')
                 .setTitle(`${interaction.user.username} has returned from being AFK`)
                 .setDescription(`${interaction.user.username} is back, say hi 👋`)
-                .setFooter({ text: `🌙 Someone returned`})
+                .setFooter({ text: `Someone Returned`})
                 .setTimestamp()
  
                 await interaction.reply({ content: `You are **no longer** AFK! Welcome back :)`, ephemeral: true})

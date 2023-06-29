@@ -40,7 +40,7 @@ module.exports = {
  
         const centerembed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setDescription(`**Nub Bot** offers a multitude of diversified features to enhance the experience for you and your server. Listed down below are the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :moneybag: **Economy** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon2:1100724446525935616> :arrow_double_up: **Level** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
+        .setDescription(`**Nub Bot** offers a multitude of diversified features to enhance the experience for you and your server. Listed down below are the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon2:1100724446525935616> :arrow_double_up: **Level** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
         .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.member.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()
@@ -55,7 +55,12 @@ module.exports = {
             new ButtonBuilder()
             .setLabel('Bot Invite')
             .setStyle(ButtonStyle.Link)
-            .setURL("https://discord.com/api/oauth2/authorize?client_id=861922247974977536&permissions=8&scope=bot%20applications.commands")
+            .setURL("https://discord.com/api/oauth2/authorize?client_id=861922247974977536&permissions=8&scope=bot%20applications.commands"),
+
+            new ButtonBuilder()
+            .setLabel('Vote on Top.gg')
+            .setStyle(ButtonStyle.Link)
+            .setURL("https://top.gg/bot/861922247974977536/vote")
         )
  
         await interaction.reply({ embeds: [centerembed], components: [helprow1, button] });

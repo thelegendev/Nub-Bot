@@ -3,7 +3,7 @@ const { SlashCommandBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle,EmbedB
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('gunfight')
-    .setDescription('Play a game of Cowboy!')
+    .setDescription('Play a game of cowboy.')
     .addUserOption(option => option.setName('player').setDescription('Select a player to challenge').setRequired(true)),
   async execute(interaction) {
     const player = interaction.options.getUser('player');

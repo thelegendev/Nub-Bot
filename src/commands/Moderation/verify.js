@@ -22,7 +22,7 @@ module.exports = {
             const channel = await interaction.options.getChannel('channel');
             const message = await interaction.options.getString('content') || 'Click the button below to verify!';
  
-            if (data) return await interaction.reply({ content: `You **already** have a verification system **set up**! \n> Do **/verify disable** to undo.`, ephemeral: true});
+            if (data) return await interaction.reply({ content: "You **already** have a verification system **set up**! \n> Use `/verify disable` to undo.", ephemeral: true});
             else {
  
                 await capschema.create({

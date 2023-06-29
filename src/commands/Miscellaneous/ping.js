@@ -11,9 +11,9 @@ module.exports = {
 
         const embed = new EmbedBuilder()
         .setTitle('**🏓 Pong!**')
-        .setDescription(`**\`📡・LATENCY: ${client.ws.ping} ms\`**`)
+        .setDescription(`**\`📡 LATENCY: ${client.ws.ping} ms\`**`)
         .setColor("#2f3136")
-        .setFooter({ text: `Requested by ${tag}`, iconURL: icon })
+        .setFooter({ text: `Latency Recorded`})
         .setTimestamp()
 
         const btn = new ActionRowBuilder()
@@ -32,9 +32,9 @@ module.exports = {
                 i.update({ embeds: [
                     new EmbedBuilder()
                     .setTitle('**🏓 Pong!**')
-                    .setDescription(`**\`📡・LATENCY: ${client.ws.ping} ms\`**`)
+                    .setDescription(`**\`📡 LATENCY: ${client.ws.ping} ms\`**`)
                     .setColor("#2f3136")
-                    .setFooter({ text: `Requested by ${tag}`, iconURL: icon })
+                    .setFooter({ text: `Latency Recorded`})
                     .setTimestamp()
                 ], components: [btn] })
             }

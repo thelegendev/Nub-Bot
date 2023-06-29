@@ -21,16 +21,17 @@ module.exports = {
         if (kickMember.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.reply({content: "You cannot kick staff members or people with the Administrator permission!", ephemeral: true})
  
         let reason = interaction.options.getString('reason');
-        if(!reason) reason = "No reason given";
+        if(!reason) reason = "No reason provided";
  
         const dmEmbed = new EmbedBuilder()
-        .setColor(0x0099FF)
+        .setColor("#2f3136")
         .setTitle('Moderation Notice')
-        .setDescription(` \n ${kickUser.tag}, \n \`You have been kicked from ${guild.name}\` \n \n \n **Reason:** \n ${reason} \n \n **Responsible Moderator:** \n ${interaction.user.tag} | (<@${interaction.user.id}>:${interaction.user.id})`)
+        .setDescription(` \n ${kickUser.tag}, \n \`You have been kicked from ${guild.name}\` \n \n \n Reason: \n ${reason} \n \n Responsible Moderator: \n ${interaction.user.tag}`)
  
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
-        .setDescription(`:white_check_mark: ${kickUser.tag} has been kicked from **${interaction.guild.name} | ${reason}**`)
+        .setDescription(`**${kickUser.tag}** has been kicked. \nReason: **${reason}**`)
+        .setFooter({ text: `User Kicked`})
         .setTimestamp()
  
         await kickMember.send({ embeds: [dmEmbed] }).catch(err => {

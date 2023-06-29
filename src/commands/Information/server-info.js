@@ -11,7 +11,7 @@ const {
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("server-info")
-    .setDescription("Receive information about the server."),
+    .setDescription("Receive information regarding the server."),
     
     async execute(interaction) {
         const { guild } = interaction;
@@ -72,7 +72,7 @@ module.exports = {
                 .setThumbnail(guild.iconURL({ size: 1024 }))
                 .setImage(guild.bannerURL({ size: 1024 }))
                 .setTimestamp()
-                .setFooter({text: interaction.user.username, iconURL: interaction.member.displayAvatarURL({ dynamic: true })})
+                .setFooter({text: `Requested by ${interaction.user.username}`, iconURL: interaction.member.displayAvatarURL({ dynamic: true })})
                 .addFields(
                     {
                         name: "__General__",

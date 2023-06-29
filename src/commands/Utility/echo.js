@@ -9,7 +9,7 @@ module.exports = {
     .addStringOption(option => option.setName('message').setDescription('The message to send to the channel').setRequired(true)),
     async execute(interaction, client) {
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ content: "You must be a administrator to use this command", ephemeral: true})
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ content: "You **do not** have the permission to do that!", ephemeral: true})
         const channel = interaction.options.getChannel('channel');
         let message = interaction.options.getString('message');
  

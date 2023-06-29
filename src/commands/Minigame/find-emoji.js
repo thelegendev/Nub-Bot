@@ -4,7 +4,7 @@ const { FindEmoji } = require('discord-gamecord');
 module.exports = {
     data: new SlashCommandBuilder()
     .setName(`find-emoji`)
-    .setDescription(`Play a game of Find Emoji!`),
+    .setDescription(`Play a game of find emoji.`),
     async execute (interaction) {
       
       const game = new FindEmoji({

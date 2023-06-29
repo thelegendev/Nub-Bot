@@ -5,7 +5,7 @@ const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fet
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('waifu')
-    .setDescription('Get a random waifu image.')
+    .setDescription('Generate a random waifu image.')
     .addStringOption(option => 
         option.setName('category')
             .setDescription('Choose your category')
@@ -27,13 +27,14 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setTitle(`${interaction.user.username}'s Waifu!`)
       .setColor('Random')
-      .setFooter({text:interaction.user.username,iconURL: interaction.member.displayAvatarURL({ dynamic: true })})
+      .setFooter({ text: `Waifu Generated`})
       .setTimestamp()
       .setImage(body.images[0].url);
 
     interaction.reply({ embeds: [embed] });
 
     const message = await interaction.fetchReply();
+    
     await message.react('👍');
     await message.react('👎');
   },

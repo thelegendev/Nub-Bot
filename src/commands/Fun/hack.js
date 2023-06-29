@@ -13,7 +13,7 @@ module.exports = {
 
     async execute(interaction) {
         const target = await interaction.options.getUser(`target`);
-        if(!target) return await interaction.reply({ content: 'Who are you trying to hack bruh? Hack yourself? Mention an user to hack smh...'});
+        if(!target) return await interaction.reply({ content: 'Who are you trying to hack huh? Hack yourself? Mention a valid user to hack smh...'});
         
         await interaction.reply({ content: `Running the process to hack ${target}...` })
         await wait(2500);

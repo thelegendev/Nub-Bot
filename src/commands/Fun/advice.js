@@ -9,7 +9,7 @@ const {
   module.exports = {
     data: new SlashCommandBuilder()
       .setName("advice")
-      .setDescription("Get some advice."),
+      .setDescription("Get some random advice."),
   
     async execute(interaction) {
       const data = await fetch("https://api.adviceslip.com/advice").then((res) =>
@@ -19,8 +19,10 @@ const {
       interaction.reply({
         embeds: [
           new EmbedBuilder()
-            .setDescription(`**${data.slip.advice}**`)
-            .setColor("Random"),
+            .setTitle("Advice for you")
+            .setDescription(`Take it or leave it! \n "**${data.slip.advice}**"`)
+            .setColor("Random")
+            .setFooter({ text: `Random Advice Generated`})
         ],
       });
     },

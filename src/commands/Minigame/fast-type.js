@@ -4,7 +4,7 @@ const { FastType } = require('discord-gamecord');
 module.exports = {
     data: new SlashCommandBuilder()
     .setName(`fast-type`)
-    .setDescription(`Play a game of Fast Type!`),
+    .setDescription(`Play a game of fast type.`),
     async execute (interaction) {
 
         const game = new FastType({

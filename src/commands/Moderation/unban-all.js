@@ -8,7 +8,7 @@ module.exports = {
 
     async execute(interaction) {
         
-        if (!interaction.member.permissions.has(PermissionsBitField.BanMembers)) {
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) {
             return interaction.reply({ content: 'You do not have permission to unban members.', ephemeral: true });
         }
 

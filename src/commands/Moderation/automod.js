@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require("disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("automod")
-    .setDescription("Setup the automod system.")
+    .setDescription("Configure the automod system.")
     .addSubcommand(command => command
         .setName("flagged-words")
         .setDescription("Block profanity, sexual content and slurs")
@@ -37,7 +37,7 @@ module.exports = {
  
         const errEmbed = new EmbedBuilder()
         .setTitle("ERROR")
-        .setColor("Red")
+        .setColor("#2f3136")
         .setDescription("Missing Permissions: Administrator")
         .setTimestamp()
  
@@ -81,8 +81,9 @@ module.exports = {
                 if (!rule) return;
  
                 const embed = new EmbedBuilder()
-                .setColor("Green")
+                .setColor("#2f3136")
                 .setDescription(`Your automod rule has been created`)
+                .setFooter({ text: `Automod Rule Created`})
  
                 await interaction.editReply({
                     content: ``,
@@ -127,8 +128,9 @@ module.exports = {
                 if (!rule2) return;
  
                 const embed2 = new EmbedBuilder()
-                .setColor("Green")
+                .setColor("#2f3136")
                 .setDescription(`Your automod rule has been created. Messages with **${word}** will be deleted`)
+                .setFooter({ text: `Automod Rule Created`})
  
                 await interaction.editReply({
                     content: ``,
@@ -172,8 +174,9 @@ module.exports = {
                 if (!rule3) return;
  
                 const embed3 = new EmbedBuilder()
-                .setColor("Green")
+                .setColor("#2f3136")
                 .setDescription(`Your automod rule has been created`)
+                .setFooter({ text: `Automod Rule Created`})
  
                 await interaction.editReply({
                     content: ``,
@@ -218,8 +221,9 @@ module.exports = {
                 if (!rule4) return;
  
                 const embed4 = new EmbedBuilder()
-                .setColor("Green")
+                .setColor("#2f3136")
                 .setDescription(`Your automod rule has been created`)
+                .setFooter({ text: `Automod Rule Created`})
  
                 await interaction.editReply({
                     content: ``,

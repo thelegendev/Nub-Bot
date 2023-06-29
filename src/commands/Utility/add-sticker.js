@@ -8,7 +8,7 @@ module.exports = {
     .addStringOption(option => option.setName('name').setDescription(`Specified name will be the sticker's name`).setRequired(true).setMinLength(2).setMaxLength(29)),
     async execute(interaction) {
  
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageEmojisAndStickers)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.ManageGuildExpressions)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
  
         const name = interaction.options.getString('name');
         const upload = interaction.options.getAttachment('sticker');
@@ -24,7 +24,7 @@ module.exports = {
  
         }).catch(err => {
             setTimeout(() => {
-                return interaction.editReply({ content: `:x: Upload **failed**! **Err**: ${err.rawError.message}`});
+                return interaction.editReply({ content: `Upload **failed**! **Err**: ${err.rawError.message}`});
             }, 2000);
         });
  

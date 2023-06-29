@@ -4,7 +4,7 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('meme')
-    .setDescription('Get a meme.'),
+    .setDescription('Generate a random meme.'),
     async execute(interaction) {
  
         async function meme() {
