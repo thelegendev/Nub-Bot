@@ -471,6 +471,9 @@ async execute(interaction, client) {
                 const collector = commandsmessage.createMessageComponentCollector({ componentType: ComponentType.Button });
  
                 collector.on('collect', async i => {
+
+                    if (i.user.id !== interaction.user.id) 
+                    return i.reply({ content: `This button is not for you.`, ephemeral: true });
             
                     if (i.customId === 'spacer8') {
                         

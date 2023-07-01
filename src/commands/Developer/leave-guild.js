@@ -2,11 +2,11 @@ const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("leave-server")
-    .setDescription("Make the bot leave a server.")
+    .setName("leave-guild")
+    .setDescription("Make the bot leave a guild.")
     .addStringOption(option =>
       option.setName("guildid")
-          .setDescription("provide the guild id")
+          .setDescription("provide the guild ID.")
           .setRequired(true)
     ),
                    
@@ -18,7 +18,7 @@ module.exports = {
 
                       const guild = client.guilds.cache.get(guildid)
                       
-                      interaction.reply({content:`Nub Bot has left the server mentioned below. \n\n **${guild.name}** (${guild.id})`, ephemeral: true})
+                      interaction.reply({content:`Nub Bot has left the guild mentioned below: \n\n **${guild.name}** (${guild.id})`, ephemeral: true})
 
                       guild.leave().catch(() => {
                     return false;
