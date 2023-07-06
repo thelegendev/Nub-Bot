@@ -57,7 +57,7 @@ async execute(interaction, client) {
             new ButtonBuilder()
             .setLabel('Bot Invite')
             .setStyle(ButtonStyle.Link)
-            .setURL("https://discord.com/api/oauth2/authorize?client_id=861922247974977536&permissions=8&scope=bot%20applications.commands"),
+            .setURL("https://discord.com/api/oauth2/authorize?client_id=861922247974977536&permissions=1127297919033&scope=bot%20applications.commands"),
 
             new ButtonBuilder()
             .setLabel('Vote on Top.gg')
