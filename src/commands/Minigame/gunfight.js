@@ -37,7 +37,7 @@ module.exports = {
     collector.on('collect', async i => {
       if (i.customId === 'accept') {
         collector.stop('accept');
-        const words = ['shoot', 'draw', 'aim', 'reload', 'fire', 'bullets'];
+        const words = ['shoot', 'draw', 'aim', 'gun', 'reload', 'fire', 'bullets'];
         const word = words[Math.floor(Math.random() * words.length)];
         const delay = Math.floor(Math.random() * 5000) + 3000;
 
@@ -45,7 +45,7 @@ module.exports = {
           .setTitle('Get Ready!')
           .setDescription('The game will start at any moment.')
           .setImage('https://giffiles.alphacoders.com/102/102565.gif')
-          .setColor('#ffa500');
+          .setColor('#2f3136');
 
         await interaction.followUp({ embeds: [readyEmbed] });
 
@@ -64,7 +64,7 @@ module.exports = {
             .setTitle('Congratulations!')
             .setImage('https://media.tenor.com/oDedOU2hfZcAAAAC/anime-cowboybebop.gif')
             .setDescription(`${winnerUser} won the cowboy game against ${interaction.user.id === winnerUser.id ? player : interaction.user}!`)
-            .setColor('#00ff00');
+            .setColor('#2f3136');
           await interaction.followUp({ embeds: [winnerEmbed] });
         }
       } else if (i.customId === 'decline') {

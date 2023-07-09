@@ -25,7 +25,7 @@ const { Connect4 } = require("discord-gamecord");
         statusTitle: "• Status",
         overTitle: "• Game Over",
         color: "#2f3136",
-        rejectColor: "Red",
+        rejectColor: "#2f3136",
       },
       emojis: {
         board: "⚪",

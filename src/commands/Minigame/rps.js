@@ -26,7 +26,7 @@ module.exports = {
         statusTitle: "• Status",
         overTitle: "• Game Over",
         color: "#2f3136",
-        rejectColor: "Red",
+        rejectColor: "#2f3136",
       },
       buttons: {
         rock: "Rock",

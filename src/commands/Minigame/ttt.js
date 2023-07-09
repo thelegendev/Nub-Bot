@@ -26,7 +26,7 @@ module.exports = {
         color: '#2f3136',
         statusTitle: '• Status',
         overTitle: '• Game Over',
-        rejectColor: "Red",
+        rejectColor: "#2f3136",
  
       },
       emojis: {
