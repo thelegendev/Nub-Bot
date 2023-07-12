@@ -1,6 +1,5 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
 const { default: axios } = require('axios');
-const { EmbedBuilder, PermissionsBitField } = require('discord.js')
  
 module.exports = {
     data: new SlashCommandBuilder()
@@ -40,9 +39,9 @@ module.exports = {
         interaction.guild.emojis.create({ attachment: `${emoji}`, name: `${name}`})
         .then(emoji => {
             const embed = new EmbedBuilder()
-            .setColor("#2f3136")
-            .setDescription(`Added ${emoji} as **${name}**`)
-            .setFooter({ text: `Emoji Added`})
+            .setColor('#2f3136')
+            .setTitle("Emoji added")
+            .setDescription(`Added ${emoji} as "**${name}**"`)
             .setTimestamp()
  
             return interaction.reply({ embeds: [embed] });

@@ -12,7 +12,7 @@ module.exports = {
             isSlashGame: true,
             embed: {
               title: '> Snake Game',
-              overTitle: 'Game Over',
+              overTitle: '• Game Over',
               color: '#2f3136'
             },
             emojis: {

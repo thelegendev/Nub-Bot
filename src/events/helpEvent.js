@@ -119,6 +119,7 @@ async execute(interaction, client) {
                 .addFields({ name: `<:icon4:1100728456448323595> /8ball`, value: `<:icon3:1100724523281694781> Play the 8ball game.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /advice`, value: `<:icon3:1100724523281694781> Get some random advice.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /ascii`, value: `<:icon3:1100724523281694781> Converts given text to ascii.` })
+                .addFields({ name: `<:icon4:1100728456448323595> /bonk`, value: `<:icon3:1100724523281694781> Bonk an user.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /coin-flip`, value: `<:icon3:1100724523281694781> Flip a coin.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /dice`, value: `<:icon3:1100724523281694781> Roll a dice.` })
                 .addFields({ name: `<:icon4:1100728456448323595> /find-game`, value: `<:icon3:1100724523281694781> Find a game you can enjoy.` })

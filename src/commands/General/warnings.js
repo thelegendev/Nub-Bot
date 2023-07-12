@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require(`@discordjs/builders`);
-const { PermissionsBitField, EmbedBuilder } = require(`discord.js`);
+const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require(`discord.js`);
 const warningSchema = require(`../../Schemas.js/warnSchema`);
  
 module.exports = {

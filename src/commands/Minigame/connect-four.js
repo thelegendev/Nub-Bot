@@ -12,8 +12,8 @@ const { Connect4 } = require("discord-gamecord");
 
   async execute(interaction) {
     const enemy = interaction.options.getUser('opponent');
-    if (interaction.user.id === enemy.id) return await interaction.reply({ content: `You **cannot** play with yourself.`, ephemeral: true});
-    if (enemy.bot) return await interaction.reply({ content: `You **cannot** play with a bot.`, ephemeral: true});
+    if (interaction.user.id === enemy.id) return await interaction.reply({ content: `You **cannot** play with yourself, silly goose...`, ephemeral: true});
+    if (enemy.bot) return await interaction.reply({ content: `You **cannot** play with a bot, silly goose...`, ephemeral: true});
 
     const game = new Connect4({
       message: interaction,
@@ -35,7 +35,7 @@ const { Connect4 } = require("discord-gamecord");
       mentionUser: true,
       timeoutTime: 120000,
       buttonStyle: "PRIMARY",
-      turnMessage: "> {emoji} | **{player}**, it is your turn!.",
+      turnMessage: "> {emoji} | **{player}**, it is your turn!",
       winMessage: "> 🎉 | **{player}** has won the Connect Four Game!",
       tieMessage: "> The game turned out to be a tie!",
       timeoutMessage: "> The game went unfinished! no one won the game!",

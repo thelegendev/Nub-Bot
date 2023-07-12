@@ -17,10 +17,10 @@ module.exports = {
             },
             customWord: null,
             timeoutTime: 60000,
-            winMessage: '> 🎉 | You won! The word was **{word}**',
-            loseMessage: '> You lost! The word was **{word}**',
+            winMessage: '> 🎉 | You won! The word was **{word}**.',
+            loseMessage: '> You lost! The word was **{word}**.',
             timeoutMessage: '> The game went unfinished.',
-            playerOnlyMessage: 'Only {player} can use these buttons'
+            playerOnlyMessage: 'Only {player} can use these buttons.'
         });
  
         try {
