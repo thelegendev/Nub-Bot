@@ -59,15 +59,14 @@ client.login(process.env.token).then(() => {
 
 const levelSchema = require("./Schemas.js/levelSchema");
 client.on(Events.MessageCreate, async (message, client) => {
- 
-    const { guild, author } = message;
- 
-    if (!guild || author.bot) return;
- 
-    levelSchema.findOne({ Guild: guild.id, User: author.id }, async (err, data) => {
- 
-        if (err) throw err;
- 
+  const { guild, author } = message;
+        if (!guild || author.bot) return
+
+        const channel = message.channel;
+
+        const give = 1;
+
+        const data = await levelSchema.findOne({ Guild: guild.id, User: author.id })
         if (!data) {
             levelSchema.create({
                 Guild: guild.id,
@@ -76,39 +75,28 @@ client.on(Events.MessageCreate, async (message, client) => {
                 Level: 0
             })
         }
-    })
- 
-    const channel = message.channel;
- 
-    const give = 1;
- 
-    const data = await levelSchema.findOne({ Guild: guild.id, User: author.id}).catch(err => {return;})
-    if (!data) return;
- 
-    const requiredXP = data.Level * data.Level * 20 + 20;
- 
-    if (data.XP + give >= requiredXP) {
- 
-        data.XP += give 
-        data.Level += 1
-        await data.save()
- 
-        if (!channel) return;
- 
-        channel.send({
-            embeds: [
-                new EmbedBuilder()
-                .setColor("#2f3136")
-                .setDescription(`Congrats ${author}, you have reached level ${data.Level}!`)
-            ]
-        })
- 
-    } else {
-        data.XP += give
-        data.save()
-    }
- 
- 
+
+        const requiredXP = data.Level * data.Level * 20 + 20
+
+        if (data.XP + give >= requiredXP) {
+            data.XP += give
+            data.Level += 1
+            await data.save()
+
+            if (!channel) return;
+
+            channel.send({
+                embeds: [
+                    new EmbedBuilder()
+                        .setColor('#2b2d31')
+                        .setDescription(`Congrats ${author}, you have reached ${data.Level} level! 🎉`)
+                ]
+            })
+
+        } else {
+            data.XP += give
+            data.save()
+        }
 }) 
 
 // CAPTCHA VERIFICATION SYSTEM
