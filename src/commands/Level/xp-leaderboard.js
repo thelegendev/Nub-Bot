@@ -25,25 +25,12 @@ module.exports = {
  
             await interaction.deferReply()
  
-            for(let counter = 0; counter < Data.length; ++counter) {
-                let { User, XP, Level } = Data[counter]
- 
-                    const value = await client.users.fetch(User) || "Unknown Member"
- 
-                    const member = value.tag;
- 
-                    text += `${counter + 1}. ${member} | XP: ${XP} | Level: ${Level} \n`
- 
-                    const embed = new EmbedBuilder()
-                        .setColor("#2f3136")
-                        .setTitle(`${interaction.guild.name}'s XP Leaderboard`)
-                        .setDescription(`\`\`\`${text}\`\`\``)
-                        .setTimestamp()
-                        .setFooter({ text: `XP Leaderboard` })
- 
-                   interaction.editReply({ embeds: [embed] })
- 
-            } 
- 
+           for (let counter = 0; counter < Data.length; ++counter) {
+            let { User, XP, Level } = Data[counter]
+            const value = await client.users.fetch(User) || "Unknown Member"
+            const member = value.tag;
+            text += `#${counter + 1}, ${member} | XP: ${XP} | Level: ${Level}\n`
+        }
+        interaction.editReply({ embeds: [embed.setDescription(`\`\`\`${text}\`\`\``)]})
     }
 }
