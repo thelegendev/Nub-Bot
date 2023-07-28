@@ -13,8 +13,8 @@ A multipurpose discord bot based on discord.js v14.
 > If you plan to host a public instance of Nub Bot by using our source code, you are not allowed to use either Nub Bot's username or its app icon.
 
 > **Note**
-> If you plan to use our source code for your project, it'd be appreciated if you would credit us; preferably within your bot.
-> We don't provide coding support. You're expected to solve your personal issue(s) with necessary knowledge. However, if you discover any issue(s) within the public instance of Nub Bot, feel free to report it [here](https://github.com/TheLegenDev/Nub-Bot/issues).
+> If you plan to use our source code for your project, it would be appreciated if you credit us.
+> We do not provide coding support. You are expected to solve your personal issue(s) with necessary knowledge. However, if you discover any issue(s) within the public instance of Nub Bot, feel free to report it [here](https://github.com/TheLegenDev/Nub-Bot/issues).
 
 ## Table of Contents
 - [Installation](#installation)
@@ -85,11 +85,11 @@ A multipurpose discord bot based on discord.js v14.
     7. Click `Copy Server ID` and paste it into the `guildId` variable inside the `handleCommands.js` file.
     8. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
     9. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
-    for instance,
+    For example,
     ```js
     npm i discord.js
     ```
-    10. Click the `run` button inside the terminal and type `node src/index.js` or `node .` to turn the bot online.
+    10. Open a new terminal and type `node .` or `node src/index.js` in there to turn the bot online.
         
 ## Contributing
 We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
