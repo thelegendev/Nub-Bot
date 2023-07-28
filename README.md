@@ -10,10 +10,11 @@ A multipurpose discord bot based on discord.js v14.
 </p>
 
 > **Warning**
-> If you plan to host a public instance of our bot by using our source code, you are not allowed to use either our bot's username or its app icon.
+> If you plan to host a public instance of Nub Bot by using our source code, you are not allowed to use either Nub Bot's username or its app icon.
 
 > **Note**
 > If you plan to use our source code for your project, it'd be appreciated if you would credit us; preferably within your bot.
+> We don't provide coding support. You're expected to solve your personal issue(s) with necessary knowledge. However, if you discover any issue(s) within the public instance of Nub Bot, feel free to report it [here](https://github.com/TheLegenDev/Nub-Bot/issues).
 
 ## Table of Contents
 - [Installation](#installation)
