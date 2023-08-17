@@ -30,7 +30,7 @@ A multipurpose discord bot based on discord.js v14.
 ## Usage
 - **Project Setup**
 
-    1. Fork the Github project:
+    1. Fork the Github project :
        1. Sign up / Sign in to [GitHub](https://github.com/).
        2. Navigate to [Nub-Bot](https://github.com/TheLegenDev/Nub-Bot).
        3. Click `Star` to support development.
@@ -45,22 +45,20 @@ A multipurpose discord bot based on discord.js v14.
 
     1. Sign in to [Discord Developer Portal](https://discord.com/developers/applications).
 
-    2. Create a bot:
+    2. Create a bot :
         1. Enter the left side `Applications`.
         2. Click `New Application` in the upper right corner and enter the name of the bot. After confirmation, enter the new page.
         3. Click on the left side `Bot`.
-        4. Click on the right side `Add Bot`.
-        6. Enable all intents under `Privileged Gateway Intents`.
-        7. Click `Save Changes`.
-        8. The token can be viewed by selecting `View Token` on the top or there will be a `Reset Token` button if it has already been applied.
+        4. Enable all intents listed under `Privileged Gateway Intents` and click `Save Changes`.
+        5. View and copy the token by clicking the `Reset Token` button.
    
-    3. Set up OAuth2
+    3. Set up OAuth2 :
         1. Click on `OAuth2` in the left column.
         2. Click on `URL Generator` in the left column.
-        3. In the right column, select bot under `SCOPES` and select `Administrator` under `BOT PERMISSIONS` at the bottom right.
-        4. Copy the URL at the bottom and paste it into your browser.
-        5. Choose the server you want to add the bot to.
-        6. Click `Continue` > `Authorize`.
+        3. In the right column, select `bot` and `applications.commands` under `SCOPES`.
+        4. Scroll down and select `Administrator` under `BOT PERMISSIONS`.
+        5. Copy the URL at the bottom and paste it into your browser.
+        6. Choose the server you want to add the bot to and click `Continue` > `Authorize`.
 
 
 - **Obtain MongoDB Connection String**
@@ -84,8 +82,8 @@ A multipurpose discord bot based on discord.js v14.
     6. Navigate to your discord server, enable developer mode and right click the dropdown beside the server name. 
     7. Click `Copy Server ID` and paste it into the `guildId` variable inside the `handleCommands.js` file.
     8. Navigate to the `package.json` file and pay attention to the packages listed under `dependencies`.
-    9. Open the terminal inside [Visual Studio Code](https://code.visualstudio.com/download) and install all the packages using `npm i <package-name>`. 
-    For example,
+    9. Open the terminal in [Visual Studio Code](https://code.visualstudio.com/download) and install all necessary packages using `npm i <package-name>`. 
+    For example :
     ```js
     npm i discord.js
     ```
@@ -95,7 +93,7 @@ A multipurpose discord bot based on discord.js v14.
 We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
 
 ## Support
-Join us on [Discord](https://discord.gg/URZnqtEbsQ) to get in touch today!
+Connect with us on [Discord](https://discord.gg/URZnqtEbsQ) for support / any related inquiry.
 
 ## License
 Released under the terms of [GNU General Public License v3.0](https://github.com/TheLegenDev/Nub-Bot/blob/main/LICENSE) license.
