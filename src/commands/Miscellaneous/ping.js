@@ -6,15 +6,33 @@ module.exports = {
     .setDescription(`Check the bot's latency.`),
     
     async execute(interaction, client) {
-        const icon = interaction.user.displayAvatarURL();
-        const tag = interaction.user.tag;
+        let circles = {
+            good: '<:high:1141959052289638440>',
+            okay: '<:mid:1141959164453736479>',
+            bad: '<:low:1141959216383402044>',
+        };
+
+        const ws = interaction.client.ws.ping;
+        const msgEdit = Date.now() - interaction.createdTimestamp;
+ 
+        const wsEmoji = ws <= 100 ? circles.good : ws <= 200 ? circles.okay : circles.bad;
+        const msgEmoji = msgEdit <= 200 ? circles.good : circles.bad;
 
         const embed = new EmbedBuilder()
-        .setTitle('**🏓 Pong!**')
-        .setDescription(`**\`📡 LATENCY: ${client.ws.ping} ms\`**`)
-        .setColor("#2f3136")
-        .setFooter({ text: `Latency Recorded`})
+        .setThumbnail(interaction.client.user.displayAvatarURL({ size: 64 }))
+        .setColor('#2f3136')
         .setTimestamp()
+        .setFooter({ text: `Latency Recorded` })
+        .addFields(
+            {
+                name: 'Websocket Latency',
+                value: `${wsEmoji} \`${ws}ms\``,
+            },
+            {
+                name: 'API Latency',
+                value: `${msgEmoji} \`${msgEdit}ms\``,
+            }
+        );
 
         const btn = new ActionRowBuilder()
         .addComponents(
@@ -31,11 +49,20 @@ module.exports = {
             if(i.customId == 'btn') {
                 i.update({ embeds: [
                     new EmbedBuilder()
-                    .setTitle('**🏓 Pong!**')
-                    .setDescription(`**\`📡 LATENCY: ${client.ws.ping} ms\`**`)
-                    .setColor("#2f3136")
-                    .setFooter({ text: `Latency Recorded`})
+                    .setThumbnail(interaction.client.user.displayAvatarURL({ size: 64 }))
+                    .setColor('#2f3136')
                     .setTimestamp()
+                    .setFooter({ text: `Latency Recorded` })
+                    .addFields(
+                        {
+                            name: 'Websocket Latency',
+                            value: `${wsEmoji} \`${ws}ms\``,
+                        },
+                        {
+                            name: 'API Latency',
+                            value: `${msgEmoji} \`${msgEdit}ms\``,
+                        }
+                    )
                 ], components: [btn] })
             }
         })
