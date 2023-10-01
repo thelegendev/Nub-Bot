@@ -73,7 +73,7 @@ module.exports = {
       }
     });
 
-    collector.on('end', async (collected, reason) => {
+    collector.on('end', async (reason) => {
       if (reason === 'time') {
         await interaction.followUp({
 

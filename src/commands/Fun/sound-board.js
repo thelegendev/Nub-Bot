@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder} = require('discord.js');
-const { joinVoiceChannel, createAudioPlayer, createAudioResource, VoiceConnectionStatus } = require('@discordjs/voice');
+const { joinVoiceChannel, createAudioPlayer, createAudioResource } = require('@discordjs/voice');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -111,9 +111,9 @@ module.exports = {
       .setFooter({ text: `Sound Played`})
       .setTimestamp();
 
-    const message = await interaction.reply({ embeds: [embedMessage], fetchReply: true,ephemeral:true });
+      await interaction.reply({ embeds: [embedMessage], fetchReply: true,ephemeral:true });
 
-    audioPlayer.on('stateChange', (oldState, newState) => {
+    audioPlayer.on('stateChange', (newState) => {
 
       if (newState.status === 'idle') {
 

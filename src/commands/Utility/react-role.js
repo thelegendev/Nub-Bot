@@ -7,7 +7,7 @@ module.exports = {
     .addRoleOption(option => option.setName(`role1`).setDescription(`This is the first role you want to set up`).setRequired(true))
     .addRoleOption(option => option.setName(`role2`).setDescription(`This is the second role you want to set up`).setRequired(true))
     .addRoleOption(option => option.setName(`role3`).setDescription(`This is the third role you want to set up`).setRequired(true)),
-    async execute (interaction, client) {
+    async execute (interaction) {
  
         const role1 = interaction.options.getRole(`role1`);
         const role2 = interaction.options.getRole(`role2`);

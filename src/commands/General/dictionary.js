@@ -18,7 +18,7 @@ module.exports = {
         let info = await data.json();
         let result = info[0];
  
-      let embedInfo = await result.meanings.map((data, index) => {
+      let embedInfo = await result.meanings.map((data) => {
  
             let definition = data.definitions[0].definition || "No definition found";
             let example = data.definitions[0].example || "No example found";

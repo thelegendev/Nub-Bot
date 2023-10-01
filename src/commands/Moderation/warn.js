@@ -4,10 +4,10 @@ const warningSchema = require("../../Schemas.js/warnSchema");
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('warn')
-    .setDescription('Warn an user within the server.')
+    .setDescription('Warn a user within the server.')
     .addUserOption(option => option.setName("target").setDescription("The user you want to warn").setRequired(true))
     .addStringOption(option => option.setName("reason").setDescription("This is the reason for warning the user").setRequired(false)),
-    async execute(interaction, client) {
+    async execute(interaction) {
 
         const warnUser = interaction.options.getUser('target');
         const warnMember = await interaction.guild.members.fetch(warnUser.id);

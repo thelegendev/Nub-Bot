@@ -9,6 +9,7 @@ module.exports = {
  
         const game = new Hangman({
             message: interaction,
+            isSlashGame: true,
             embed: {
                 title: `> Hangman`,
                 color: `#2f3136`

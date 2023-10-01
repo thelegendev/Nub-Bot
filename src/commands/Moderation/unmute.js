@@ -3,10 +3,10 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('unmute')
-    .setDescription(`Untime out an user within the server.`)
+    .setDescription(`Untime out a user within the server.`)
     .addUserOption(option => option.setName('target').setDescription('The user you would like to untimeout').setRequired(true))
     .addStringOption(option => option.setName('reason').setDescription('The reason for untiming out the user')),
-    async execute(interaction, message, client) {
+    async execute(interaction) {
  
         const timeUser = interaction.options.getUser('target');
         const timeMember = await interaction.guild.members.fetch(timeUser.id);

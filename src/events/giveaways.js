@@ -6,7 +6,7 @@ module.exports = class GiveawaysManager extends gw {
         return await giveawayModel.find().lean().exec();
     }
  
-    async saveGiveaway(messageId, giveawayData) {
+    async saveGiveaway(giveawayData) {
         return await giveawayModel.create(giveawayData);
     }
  

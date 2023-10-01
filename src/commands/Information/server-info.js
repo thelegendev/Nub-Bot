@@ -1,12 +1,4 @@
-const {
-    ChatInputCommandInteraction,
-    EmbedBuilder,
-    ChannelType,
-    GuildVerificationLevel,
-    GuildExplicitContentFilter,
-    GuildNSFWLevel,
-    SlashCommandBuilder
-} = require("discord.js");
+const { EmbedBuilder, ChannelType, GuildVerificationLevel, GuildExplicitContentFilter, GuildNSFWLevel, SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -47,7 +39,7 @@ module.exports = {
 
         const splitPascal = (string, separator) => string.split(/(?=[A-Z])/).join(separator);
         const toPascalCase = (string, separator = false) => {
-            const pascal = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
+            const pascal = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (chr) => chr.toUpperCase());
             return separator ? splitPascal(pascal, separator) : pascal;
         };
 

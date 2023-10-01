@@ -1,9 +1,9 @@
-const { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, PermissionsBitField } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
  
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ban')
-    .setDescription('Ban an user from the server.')
+    .setDescription('Ban a user from the server.')
     .setDMPermission(false)
     .addUserOption(option =>
       option.setName('user')
@@ -22,10 +22,6 @@ module.exports = {
       .setColor("#2f3136")
       .setTitle('Invalid Permission')
       .setDescription(`You do not have permission to use this command.`)
-      .setTimestamp()
-    const unableEmbed = new EmbedBuilder()
-      .setColor("#2f3136")
-      .setDescription(`Unable to send a DM to ${target.tag}.`)
       .setTimestamp()
     const dmEmbed = new EmbedBuilder()
       .setColor("#2f3136")

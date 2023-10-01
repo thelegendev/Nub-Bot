@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('purge')
-        .setDescription('Clear messages from an user.')
+        .setDescription('Clear messages from a user.')
         .addStringOption(option =>
             option.setName('amount')
                 .setDescription('The number of messages to clear (up to 99)')

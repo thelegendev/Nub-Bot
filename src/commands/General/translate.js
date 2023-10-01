@@ -66,7 +66,7 @@ module.exports = {
     category: 'Text',
     cooldown: 5000,
 
-    async execute(interaction, client) {
+    async execute(interaction) {
         const msg = interaction.options.getString('text')
         const from = interaction.options.getString('from')
         const to = interaction.options.getString('to')

@@ -3,14 +3,13 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('unban')
-    .setDescription('Unban an user in the server.')
+    .setDescription('Unban a user in the server.')
     .addUserOption(option => option.setName('user').setDescription('Specify the user you want to ban.').setRequired(true))
     .addStringOption(option => option.setName('reason').setDescription('Reason as to why you want to unban specified user.').setRequired(false)),
-    async execute(interaction, client) {
+    async execute(interaction) {
  
         const target = interaction.options.getUser('user');
         const reason = interaction.options.getString('reason') || 'No Reason Provided';
-        let guild = await interaction.guild.fetch();
  
         if (!interaction.member.permissions.has(PermissionsBitField.Flags.BanMembers)) return await interaction.reply({ content: 'You **do not** have the permission to do that.', ephemeral: true});
         if (interaction.member.id === target.id) return await interaction.reply({ content: 'You **cannot** unban yourself.'});

@@ -5,7 +5,7 @@ module.exports = {
     .setName('ping')
     .setDescription(`Check the bot's latency.`),
     
-    async execute(interaction, client) {
+    async execute(interaction) {
         let circles = {
             good: '<:high:1141959052289638440>',
             okay: '<:mid:1141959164453736479>',
@@ -45,7 +45,12 @@ module.exports = {
         const msg = await interaction.reply({ embeds: [embed], components: [btn] })
 
         const collector = msg.createMessageComponentCollector()
+        
         collector.on('collect', async i => {
+
+            if (i.user.id !== interaction.user.id) 
+            return i.reply({ content: `This button is not for you!`, ephemeral: true });
+
             if(i.customId == 'btn') {
                 i.update({ embeds: [
                     new EmbedBuilder()

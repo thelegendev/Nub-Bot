@@ -1,9 +1,8 @@
 const { REST } = require("@discordjs/rest");
-const { Routes } = require('discord-api-types/v9');
+const { Routes } = require('discord-api-types/v10');
 const fs = require('fs');
 
-const clientId = '861922247974977536'; 
-const guildId = '999278158706647070';
+const clientId = '861922247974977536';
 
 module.exports = (client) => {
     client.handleCommands = async (commandFolders, path) => {
@@ -18,7 +17,7 @@ module.exports = (client) => {
         }
 
         const rest = new REST({
-            version: '9'
+            version: '10'
         }).setToken(process.env.token);
 
         (async () => {

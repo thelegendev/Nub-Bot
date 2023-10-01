@@ -1,14 +1,14 @@
-const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require(`discord.js`);
+const { SlashCommandBuilder, EmbedBuilder } = require(`discord.js`);
 const warningSchema = require(`../../Schemas.js/warnSchema`);
  
 module.exports = {
     data: new SlashCommandBuilder()
     .setName(`warnings`)
-    .setDescription(`Shows an user's warnings within the server.`)
+    .setDescription(`Shows a user's warnings within the server.`)
     .addUserOption(option => option.setName('user').setDescription(`THe member you want to check the warns of`).setRequired(true)),
     async execute(interaction) {
  
-        const { options, guildId, user } = interaction;
+        const { options, guildId } = interaction;
  
         const target = options.getUser('user');
  

@@ -1,22 +1,21 @@
-const { EmbedBuilder, Events } = require("discord.js");
+const { EmbedBuilder, WebhookClient } = require("discord.js");
 
 function logging(client) {
  
     const logSchema = require("../Schemas.js/logSchema");
  
     function send_log(guildId, embed) {
-        logSchema.findOne({ Guild: guildId }, async (err, data) => {
-            if (!data || !data.Channel) return;
-            const LogChannel = client.channels.cache.get(data.Channel);
- 
-            if (!LogChannel) return;
-            embed.setTimestamp();
- 
+        logSchema.findOne({ Guild: guildId }, async (data) => {
+            if (!data || !data.Webhook) return;
+
             try {
-                LogChannel.send({ embeds: [embed] });
-            } catch(err) {
-                console.log('Error sending log!');
-            }
+                const webhook = new WebhookClient({ url: data.Webhook });
+                if (!webhook) return;
+
+                await webhook.send({
+                    embeds: [embed]
+                });
+            } catch (err) { }
         });
     }
  
@@ -33,8 +32,7 @@ function logging(client) {
             .addFields({ name: `Author`, value: `<@${message.author.id}> - *${message.author.tag}*`})
             .addFields({ name: `Channel`, value: `${message.channel}`})
             .addFields({ name: `Deleted Message`, value: `${message.content}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Message Deleted`})
+            .setFooter({ text: `Logging System`})
  
             return send_log(message.guild.id, embed);
         } catch (err) {
@@ -43,7 +41,6 @@ function logging(client) {
  
     });
  
-    // Channel Topic Updating 
     client.on("guildChannelTopicUpdate", (channel, oldTopic, newTopic) => {
  
         try {
@@ -56,8 +53,7 @@ function logging(client) {
             .addFields({ name: `Channel`, value: `${channel}`})
             .addFields({ name: `Old Topic`, value: `${oldTopic}`})
             .addFields({ name: `New Topic`, value: `${newTopic}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Topic Update`})
+            .setFooter({ text: `Logging System`})
  
             return send_log(channel.guild.id, embed);
  
@@ -65,9 +61,8 @@ function logging(client) {
             console.log('Err logging topic update')
         }
     });
- 
-    // Channel Permission Updating
-    client.on("guildChannelPermissionsUpdate", (channel, oldPermissions, newPermissions) => {
+
+    client.on("guildChannelPermissionsUpdate", (channel) => {
  
         try {
             if (channel.guild === null) return;
@@ -78,17 +73,15 @@ function logging(client) {
             .setTimestamp()
             .addFields({ name: `Channel`, value: `${channel}`})
             .addFields({ name: `Changes`, value: `Channel's permissions/name were updated`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Permissions Update`})
+            .setFooter({ text: `Logging System`})
  
             return send_log(channel.guild.id, embed);
         } catch (err) {
             console.log('Err logging channel update')
         }
     })
- 
-    // unhandled Guild Channel Update
-    client.on("unhandledGuildChannelUpdate", (oldChannel, newChannel) => {
+
+    client.on("unhandledGuildChannelUpdate", (oldChannel) => {
  
         try {
  
@@ -100,8 +93,7 @@ function logging(client) {
             .setTimestamp()
             .addFields({ name: `Channel`, value: `${oldChannel}`})
             .addFields({ name: `Changes`, value: `**Nub Bot** couldn't find any changes!`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Channel Update`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(oldChannel.guild.id, embed);
  
@@ -110,8 +102,7 @@ function logging(client) {
     }
  
     });
- 
-    // Member Started Boosting
+
     client.on("guildMemberBoost", (member) => {
  
         try {
@@ -124,8 +115,7 @@ function logging(client) {
             .setTimestamp()
             .addFields({ name: `Member`, value: `${member.user}`})
             .addFields({ name: `Server`, value: `${member.guild.name}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Boosting Started`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -134,8 +124,7 @@ function logging(client) {
     }
  
     })
- 
-    // Member Unboosted
+
     client.on("guildMemberUnboost", (member) => {
  
         try {
@@ -148,8 +137,7 @@ function logging(client) {
             .setTimestamp()
             .addFields({ name: `Member`, value: `${member.user}`})
             .addFields({ name: `Server`, value: `${member.guild.name}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Boosting Stopped`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -158,8 +146,7 @@ function logging(client) {
     }
  
     })
- 
-    // Member Got Role
+
     client.on("guildMemberRoleAdd", (member, role) => {
  
         try {
@@ -172,8 +159,7 @@ function logging(client) {
             .setTimestamp()
             .addFields({ name: `Member`, value: `${member.user}`})
             .addFields({ name: `Role`, value: `${role}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Role Given`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -182,8 +168,7 @@ function logging(client) {
     }
  
     })
- 
-    // Member Lost Role
+
     client.on("guildMemberRoleRemove", (member, role) => {
  
         try {
@@ -196,8 +181,7 @@ function logging(client) {
             .setTimestamp()
             .addFields({ name: `Member`, value: `${member.user}`})
             .addFields({ name: `Role`, value: `${role}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Role Removed`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -206,8 +190,7 @@ function logging(client) {
     }
  
     })
- 
-    // Nickname Changed
+
     client.on("guildMemberNicknameUpdate", (member, oldNickname, newNickname) => {
  
         try {
@@ -216,8 +199,7 @@ function logging(client) {
             .setTitle('Nickname Updated')
             .setColor('#2f3136')
             .setTimestamp()
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Nickname Changed`})
+            .setFooter({ text: `Logging System`})
             .addFields({ name: `Member`, value: `${member.user}`})
             .addFields({ name: `Old Nickname`, value: `${oldNickname || '**None**'}`})
             .addFields({ name: `New Nickname`, value: `${newNickname || '**None**'}`})
@@ -229,8 +211,7 @@ function logging(client) {
     }
  
     })
- 
-    // Member Joined
+
     client.on("guildMemberAdd", (member) => {
  
         try {
@@ -244,8 +225,7 @@ function logging(client) {
             .addFields({ name: `Member ID`, value: `${member.user.id}`})
             .addFields({ name: `Member Tag`, value: `${member.user.tag}`})
             .setTimestamp()
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `User Joined`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -254,8 +234,7 @@ function logging(client) {
     }
  
     });
- 
-    // Member Left
+
     client.on("guildMemberRemove", (member) => {
  
         try {
@@ -269,8 +248,7 @@ function logging(client) {
             .addFields({ name: `Member ID`, value: `${member.user.id}`})
             .addFields({ name: `Member Tag`, value: `${member.user.tag}`})
             .setTimestamp()
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `User Left`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -279,8 +257,7 @@ function logging(client) {
     }
  
     });
- 
-    // Server Boost Level Up
+
     client.on("guildBoostLevelUp", (guild, oldLevel, newLevel) => {
  
         try {
@@ -293,8 +270,7 @@ function logging(client) {
         .setTimestamp()
         .addFields({ name: `Info`, value: `**${guild.name}** advanced from level **${oldLevel}** to **${newLevel}**!`})
         .addFields({ name: `Server`, value: `${member.guild.name}`})
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Boosting Level Up`})
+        .setFooter({ text: `Logging System`})
  
         return send_log(guild.id, embed);
  
@@ -303,8 +279,7 @@ function logging(client) {
     }
  
     })
- 
-    // Server Boost Level Down
+
     client.on("guildBoostLevelDown", (guild, oldLevel, newLevel) => {
  
         try {
@@ -317,17 +292,15 @@ function logging(client) {
         .setTimestamp()
         .addFields({ name: `Info`, value: `**${guild.name}** lost a level, from **${oldLevel}** to **${newLevel}**!`})
         .addFields({ name: `Server`, value: `${member.guild.name}`})
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Boosting Level Down`})
+        .setFooter({ text: `Logging System`})
         return send_log(guild.id, embed);
  
     } catch (err) {
-        console.log('Err logging level down')
+        console.log('Err logging boost level down')
     }
  
     })
- 
-    // Banner Added
+
     client.on("guildBannerAdd", (guild, bannerURL) => {
  
         try {
@@ -339,8 +312,7 @@ function logging(client) {
             .setColor('#2f3136')
             .addFields({ name: `Banner URL`, value: `${bannerURL}`})
             .setImage(bannerURL)
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Banner Updated`})
+            .setFooter({ text: `Logging System`})
             .setTimestamp()
  
         return send_log(guild.id, embed);
@@ -350,8 +322,7 @@ function logging(client) {
     }
  
     })
- 
-    // AFK Channel Added
+
     client.on("guildAfkChannelAdd", (guild, afkChannel) => {
  
         try {
@@ -363,8 +334,7 @@ function logging(client) {
         .setColor('#2f3136')
         .addFields({ name: `AFK Channel`, value: `${afkChannel}`})
         .setTimestamp()
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `AFK Channel Added`})
+        .setFooter({ text: `Logging System`})
  
         return send_log(guild.id, embed);
  
@@ -373,8 +343,7 @@ function logging(client) {
     }
  
     })
- 
-    // Guild Vanity Add
+
     client.on("guildVanityURLAdd", (guild, vanityURL) => {
  
         try {
@@ -386,10 +355,8 @@ function logging(client) {
         .setColor('#2f3136')
         .setTimestamp()
         .addFields({ name: `Vanity URL`, value: `${vanityURL}`})
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Vanity Created`})
- 
- 
+        .setFooter({ text: `Logging System`})
+
         return send_log(guild.id, embed);
  
     } catch (err) {
@@ -397,8 +364,7 @@ function logging(client) {
     }
  
     })
- 
-    // Guild Vanity Remove
+
     client.on("guildVanityURLRemove", (guild, vanityURL) => {
  
         try {
@@ -410,8 +376,7 @@ function logging(client) {
         .setColor('#2f3136')
         .addFields({ name: `Old Vanity`, value: `${vanityURL}`})
         .setTimestamp()
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Vanity Removed`})
+        .setFooter({ text: `Logging System`})
  
         return send_log(guild.id, embed);
  
@@ -420,8 +385,7 @@ function logging(client) {
     }
  
     })
- 
-    // Guild Vanity Link Updated
+
     client.on("guildVanityURLUpdate", (guild, oldVanityURL, newVanityURL) => {
  
         try {
@@ -434,8 +398,7 @@ function logging(client) {
         .addFields({ name: `Old Vanity`, value: `${oldVanityURL}`})
         .addFields({ name: `New Vanity`, value: `${newVanityURL}`})
         .setTimestamp()
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Vanity Updated`})
+        .setFooter({ text: `Logging System`})
  
         return send_log(guild.id, embed);
  
@@ -444,8 +407,7 @@ function logging(client) {
     }
  
     })
- 
-    // Message Pinned
+
     client.on("messagePinned", (message) => {
  
         try {
@@ -458,8 +420,7 @@ function logging(client) {
         .setTimestamp()
         .addFields({ name: `Pinner`, value: `${message.author}`})
         .addFields({ name: `Message`, value: `${message.content}`})
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Message Pinned`})
+        .setFooter({ text: `Logging System`})
  
         return send_log(message.guild.id, embed);
  
@@ -468,8 +429,7 @@ function logging(client) {
     }
  
     })
- 
-    // Message Edited
+
     client.on("messageContentEdited", (message, oldContent, newContent) => {
  
         try {
@@ -484,11 +444,8 @@ function logging(client) {
         .addFields({ name: `Member`, value: `${message.author}`})
         .addFields({ name: `Old Message`, value: `${oldContent}`})
         .addFields({ name: `New Message`, value: `${newContent}`})
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Message Edited`})
- 
- 
- 
+        .setFooter({ text: `Logging System`})
+
         return send_log(message.guild.id, embed);
  
     } catch (err) {
@@ -496,8 +453,7 @@ function logging(client) {
     }
  
     })
- 
-    // Role Position Updated
+
     client.on("rolePositionUpdate", (role, oldPosition, newPosition) => {
  
         try {
@@ -505,24 +461,22 @@ function logging(client) {
         if (role.guild === null) return;
  
         const embed = new EmbedBuilder()
-        .setTitle('Role position Updated')
-        .setColor('#2f3136')
-        .addFields({ name: `Role`, value: `${role}`})
-        .addFields({ name: `Old Position`, value: `${oldPosition}`})
-        .addFields({ name: `New Position`, value: `${newPosition}`})
-        .setTimestamp()
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Role Position Updated`})
+            .setTitle('Role position Updated')
+            .setColor('#2f3136')
+            .addFields({ name: `Role`, value: `${role}`})
+            .addFields({ name: `Old Position`, value: `${oldPosition}`})
+            .addFields({ name: `New Position`, value: `${newPosition}`})
+            .setTimestamp()
+            .setFooter({ text: `Logging System`})
  
-    return send_log(role.guild.id, embed);
+        return send_log(role.guild.id, embed);
  
-} catch (err) {
-    console.log('Err logging role pos update')
-}
+    } catch (err) {
+        console.log('Err logging role pos update')
+    }
  
     })
- 
-    // Role Permission Updated
+
     client.on("rolePermissionsUpdate", (role, oldPermissions, newPermissions) => {
  
         try {
@@ -536,8 +490,7 @@ function logging(client) {
             .addFields({ name: `Old Permissions`, value: `${oldPermissions}`})
             .addFields({ name: `New Permissions`, value: `${newPermissions}`})
             .setTimestamp()
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Role Permissions Updated`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(role.guild.id, embed);
  
@@ -546,8 +499,7 @@ function logging(client) {
     }
  
     })
- 
-    // VC Switch
+
     client.on("voiceChannelSwitch", (member, oldChannel, newChannel) => {
  
         try {
@@ -561,8 +513,7 @@ function logging(client) {
             .addFields({ name: `Member`, value: `${member.user}`})
             .addFields({ name: `From`, value: `${oldChannel}`})
             .addFields({ name: `To`, value: `${newChannel}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Voice Switch`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(member.guild.id, embed);
  
@@ -571,8 +522,7 @@ function logging(client) {
     }
  
     })
- 
-    // Role Created
+
     client.on("roleCreate", (role) => {
  
         try {
@@ -587,8 +537,7 @@ function logging(client) {
             .addFields({ name: `Role ID`, value: `${role.id}`})
             .addFields({ name: `Role HEX`, value: `${role.hexColor}`})
             .addFields({ name: `Role Pos`, value: `${role.position}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Role Created`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(role.guild.id, embed);
  
@@ -597,8 +546,7 @@ function logging(client) {
     }
  
     });
- 
-    // Role Deleted
+
     client.on("roleDelete", (role) => {
  
         try {
@@ -610,8 +558,7 @@ function logging(client) {
         .setColor('#2f3136')
         .setTimestamp()
         .addFields({ name: `Role Name`, value: `${role.name}`})
-        .setAuthor({ name: `Logging System`})
-        .setFooter({ text: `Role Deleted`})
+        .setFooter({ text: `Logging System`})
  
     return send_log(role.guild.id, embed);
  
@@ -621,8 +568,7 @@ function logging(client) {
  
  
     });
- 
-    // User Banned
+
     client.on("guildBanAdd", ({guild, user}) => {
  
         try {
@@ -636,8 +582,7 @@ function logging(client) {
             .addFields({ name: `Member`, value: `${user}`})
             .addFields({ name: `Member ID`, value: `${user.id}`})
             .addFields({ name: `Member Tag`, value: `${user.tag}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `User Banned`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(guild.id, embed);
  
@@ -646,8 +591,7 @@ function logging(client) {
     }
  
     });
- 
-    // User Unbanned
+
     client.on("guildBanRemove", ({guild, user}) => {
  
         try {
@@ -659,8 +603,7 @@ function logging(client) {
             .setColor('#2f3136')
             .setTimestamp()
             .addFields({ name: `Member`, value: `${user}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `User Unbanned`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(guild.id, embed);
  
@@ -669,8 +612,7 @@ function logging(client) {
     }
  
     });
- 
-    // Channel Created
+
     client.on("channelCreate", (channel) => {
  
         try {
@@ -682,8 +624,7 @@ function logging(client) {
             .setColor('#2f3136')
             .setTimestamp()
             .addFields({ name: `Channel`, value: `${channel}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Channel Created`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(channel.guild.id, embed);
  
@@ -692,8 +633,7 @@ function logging(client) {
     }
  
     });
- 
-    // Channel Deleted
+
     client.on("channelDelete", (channel) => {
  
         try {
@@ -705,8 +645,7 @@ function logging(client) {
             .setColor('#2f3136')
             .setTimestamp()
             .addFields({ name: `Channel`, value: `${channel}`})
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Channel Deleted`})
+            .setFooter({ text: `Logging System`})
  
         return send_log(channel.guild.id, embed);
  

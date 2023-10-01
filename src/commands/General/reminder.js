@@ -37,14 +37,14 @@ module.exports = {
     .addSubcommand(command => command.setName('cancel').setDescription('Specified reminder will be cancelled.').addStringOption(option => option.setName('id').setDescription(`Specified reminder will be cancelled. You must know the reminder's ID to do this.`).setMinLength(1).setMaxLength(30).setRequired(true)))
     .addSubcommand(command => command.setName('cancel-all').setDescription('Cancels all currently active reminders.')),
  
-    async execute (interaction, client) {
+    async execute (interaction) {
  
         const sub = await interaction.options.getSubcommand();
  
         switch (sub) {
             case 'set':
  
-        const {options, guild} = interaction;
+        const {options} = interaction;
         const reminder = options.getString("reminder");
         const minute = options.getInteger("minutes") || 0;
         const hour = options.getInteger("hours") || 0;

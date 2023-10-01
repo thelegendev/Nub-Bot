@@ -4,13 +4,13 @@ const warningSchema = require(`../../Schemas.js/warnSchema`);
 module.exports = {
     data: new SlashCommandBuilder()
     .setName(`clear-warn`)
-    .setDescription(`Clear an user's warnings.`)
+    .setDescription(`Clear a user's warnings.`)
     .addUserOption(option => option.setName('user').setDescription(`The user you want to clear the warnings of.`).setRequired(true)),
     async execute(interaction) {
  
         if (!interaction.member.permissions.has(PermissionsBitField.Flags.KickMembers)) return await interaction.reply({ content: "You dont have permission to clear peoples warnings.", ephemeral: true});
  
-        const { options, guildId, user } = interaction;
+        const { options, guildId } = interaction;
  
         const target = options.getUser('user');
  

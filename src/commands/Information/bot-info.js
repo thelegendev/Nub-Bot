@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, CommandInteraction, PermissionFlagsBits,EmbedBuilder,ChatInputCommandInteraction,Client, ChannelType,UserFlags,version } = require("discord.js");
-
 const { connection } = require("mongoose");
 const os = require("os");
 
@@ -71,7 +70,7 @@ module.exports = {
 
                    { name:"<:nodejs:1123961023452426382> Node.js", value: process.version, inline: false },
 
-                   { name: "<:djs:1123961072639029338> Discord.js", value: version, inline: false },
+                   { name: "<:djs:1123961072639029338> Discord.js", value: `v${version}`, inline: false },
 
                    { name: "<:slash:1123961124216393728> Commands", value: `${client.commands.size}`, inline: false },
 

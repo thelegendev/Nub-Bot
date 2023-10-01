@@ -3,7 +3,7 @@ const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('disc
 module.exports = {
     data: new SlashCommandBuilder()
     .setName('mute')
-    .setDescription('Time out an user within the server.')
+    .setDescription('Time out a user within the server.')
     .addUserOption(option => option.setName('target').setDescription('The user you would like to time out').setRequired(true))
     .addStringOption(option => option.setName('duration').setRequired(true).setDescription('The duration of the timeout')
     .addChoices(
@@ -26,11 +26,10 @@ module.exports = {
     { name: '5 Days', value: '432000'},
     { name: 'One Week', value: '604800'} ))
     .addStringOption(option => option.setName('reason').setDescription('The reason for timing out the user')),
-    async execute(interaction, message, client) {
+    async execute(interaction) {
  
         const timeUser = interaction.options.getUser('target');
         const timeMember = await interaction.guild.members.fetch(timeUser.id);
-        const channel = interaction.channel;
         const duration = interaction.options.getString('duration');
         let guild = await interaction.guild.fetch();
  

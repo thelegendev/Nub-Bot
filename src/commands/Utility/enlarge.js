@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const { default: axios } = require('axios');
-const { execute } = require('../../events/interactionCreate');
  
 module.exports = {
     data: new SlashCommandBuilder()

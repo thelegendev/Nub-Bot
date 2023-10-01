@@ -7,7 +7,6 @@ module.exports = {
         .setDescription('Configure roles within the server.')
         .addSubcommand(command => command.setName('add').setDescription('Assigns a role to the specified user.').addUserOption(option => option.setName('user').setDescription('Specified user will be given the specified role.').setRequired(true)).addRoleOption(option => option.setName('role').setDescription('Specified role will be given to the specified user.').setRequired(true)))
         .addSubcommand(command => command.setName('remove').setDescription('Removes the specified role from the user.').addUserOption(option => option.setName('user').setDescription('Removes the specified role from the user.').setRequired(true)).addRoleOption(option => option.setName('role').setDescription('Specified role will be removed from the specified user.').setRequired(true)))
-        .addSubcommand(command => command.setName('all').setDescription('Assigns the specified role to all users within the server.').addRoleOption(option => option.setName("role").setDescription(`Specified role will be assigned to all users within the server.`).setRequired(true)))
         .addSubcommand(command => command.setName('members').setDescription('Displays the amount of people who have the specified role.').addRoleOption(option => option.setName("role").setDescription(`Specified role's member count will be displayed.`).setRequired(true)))
         .addSubcommand(command => command.setName('delete').setDescription('Deletes the specified role.').addRoleOption(option => option.setName('role').setDescription('Specified role will be deleted from the server.').setRequired(true)))
         .addSubcommand(command => command.setName('create').setDescription('Creates a role with the specified details.')
@@ -90,34 +89,6 @@ module.exports = {
             await interaction.reply({ embeds: [removeembed] });
 
             break;
-            case 'all':
-
-            const subcommand = interaction.options.getSubcommand();
-
-    if (subcommand === "all") {
-    
-      const done = new EmbedBuilder()
-        .setColor("#2f3136")
-        .setDescription(
-          `:white_check_mark: ${role} role has been assigned to all users.\nPlease note that it might take a while for the roles to be assigned.`
-        );
-        
-       const fail = new EmbedBuilder()
-        .setColor("#2f3136")
-        .setDescription(`:x: Unable to assign ${role} role to all users.`);
-
-      try {
-        await interaction.guild.members.cache.forEach((member) =>
-          member.roles.add(role)
-        );
-
-        await interaction.reply({ embeds: [done] });
-      } catch (error) {
-        interaction.reply({ embeds: [fail], ephemeral: true });
-      }
-    }
-            break;
-            
             case 'members':
 
             const memberslist = await interaction.guild.roles.cache.get(role.id).members.map(m => m.user.tag).join('\n> ');

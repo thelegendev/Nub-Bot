@@ -1,6 +1,6 @@
-const { Client, GatewayIntentBits, EmbedBuilder, AttachmentBuilder, ActionRowBuilder, ButtonBuilder, ModalBuilder, ButtonStyle, TextInputBuilder, TextInputStyle, PermissionsBitField, Permissions, MessageManager, Embed, Collection } = require(`discord.js`);
+const { Client, GatewayIntentBits, EmbedBuilder, AttachmentBuilder, ActionRowBuilder, ButtonBuilder, ModalBuilder, ButtonStyle, TextInputBuilder, TextInputStyle, Collection } = require(`discord.js`);
 const fs = require('fs');
-const Events = require('discord.js');
+const { Events }  = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers, GatewayIntentBits.DirectMessages] });
 const Logs = require('discord-logs');
 const GiveawaysManager = require("./events/giveaways");
@@ -54,50 +54,7 @@ const {logging} = require("./events/logging");
 client.login(process.env.token).then(() => {
     logging(client);
 });
-
-// LEVELLING SYSTEM
-
-const levelSchema = require("./Schemas.js/levelSchema");
-client.on(Events.MessageCreate, async (message, client) => {
-  const { guild, author } = message;
-        if (!guild || author.bot) return
-
-        const channel = message.channel;
-
-        const give = 1;
-
-        const data = await levelSchema.findOne({ Guild: guild.id, User: author.id })
-        if (!data) {
-            levelSchema.create({
-                Guild: guild.id,
-                User: author.id,
-                XP: 0,
-                Level: 0
-            })
-        }
-
-        const requiredXP = data.Level * data.Level * 20 + 20
-
-        if (data.XP + give >= requiredXP) {
-            data.XP += give
-            data.Level += 1
-            await data.save()
-
-            if (!channel) return;
-
-            channel.send({
-                embeds: [
-                    new EmbedBuilder()
-                        .setColor('#2b2d31')
-                        .setDescription(`Congrats ${author}, you have reached ${data.Level} level! 🎉`)
-                ]
-            })
-
-        } else {
-            data.XP += give
-            data.save()
-        }
-}) 
+ 
 
 // CAPTCHA VERIFICATION SYSTEM
 
@@ -105,7 +62,7 @@ const capschema = require('./Schemas.js/verifySchema');
 const verifyusers = require('./Schemas.js/verifyusersSchema');
 const { CaptchaGenerator } = require('captcha-canvas');
  
-client.on(Events.InteractionCreate, async interaction => {
+client.on(Events.InteractionCreate, async (interaction) => {
  
     if (interaction.guild === null) return;
  
@@ -208,7 +165,7 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 })
  
-client.on(Events.InteractionCreate, async interaction => {
+client.on(Events.InteractionCreate, async (interaction) => {
  
     if (!interaction.isModalSubmit()) return;
  
@@ -294,7 +251,7 @@ setInterval(async () => {
     if (!reminders) return;
     else {
 
-        reminders.forEach( async reminder => {
+        reminders.forEach(async (reminder) => {
 
             if (reminder.Time > Date.now()) return;
 
@@ -323,154 +280,20 @@ client.on(Events.InteractionCreate, async interaction => {
     if(!interaction.isChatInputCommand()) return;
 
     else {
-        const channel = await client.channels.cache.get('1105478817633538122');
         const server = interaction.guild.name;
+        const serverId = interaction.guild.id;
         const user = interaction.user.tag;
         const userId = interaction.user.id;
-  
-        const embed = new EmbedBuilder()
-        .setColor("#2f3136")
-        .setTitle(`⚠️ Application (/) Command used!`)
-        .addFields({ name: `Server Name`, value: `${server}`})
-        .addFields({ name: `Application (/) Command`, value: `/${interaction.commandName}`})
-        .addFields({ name: `User`, value: `${user} / ${userId}`})
-        .setTimestamp()
-        .setFooter({ text: `Application (/) Command executed`})
-  
-        await channel.send({ embeds: [embed] });
+
+        console.log(`/${interaction.commandName} ---> ${user} (${userId}) ---> ${server} (${serverId})`)
     }
 });
 
-// TICKET SYSTEM
-
-const ticketSchema = require("./Schemas.js/ticketSchema");
-
-client.on(Events.InteractionCreate, async (interaction) => {
-  const { customId, guild, channel } = interaction;
-  if (interaction.isButton()) {
-    if (customId === "ticket") {
-      let data = await ticketSchema.findOne({
-        GuildID: interaction.guild.id,
-      });
- 
-      if (!data) return await interaction.reply({ content: "Ticket system is not setup in this server", ephemeral: true })
-      const role = guild.roles.cache.get(data.Role)
-      const cate = data.Category;
- 
- 
-      await interaction.guild.channels.create({
-        name: `ticket-${interaction.user.username}`,
-        parent: cate,
-        type: ChannelType.GuildText,
-        permissionOverwrites: [
-          {
-            id: interaction.guild.id,
-            deny: ["ViewChannel"]
-          },
-          {
-            id: role.id,
-            allow: ["ViewChannel", "SendMessages", "ReadMessageHistory"]
-          },
-          {
-            id: interaction.member.id,
-            allow: ["ViewChannel", "SendMessages", "ReadMessageHistory"]
-          },
-        ],
-      }).then(async (channel) => {
-        const openembed = new EmbedBuilder()
-          .setColor("#2f3136")
-          .setTitle("Ticket Opened")
-          .setDescription(`Welcome to your ticket ${interaction.user.username}\n React with 🔒 to close the ticket`)
-          .setTimestamp()
-          .setFooter({ text: `${interaction.guild.name}'s Tickets` })
- 
-          const closeButton = new ActionRowBuilder()
-          .addComponents(
-            new ButtonBuilder()
-            .setCustomId('closeticket')
-            .setLabel('Close')
-            .setStyle(ButtonStyle.Danger)
-            .setEmoji('🔒')
-          )
-          await channel.send({ content: `<@&${role.id}>`, embeds: [openembed], components: [closeButton] })
- 
-          const openedTicket = new EmbedBuilder()
-          .setColor("#2f3136")
-          .setDescription(`Ticket created in <#${channel.id}>`)
- 
-          await interaction.reply({ embeds: [openedTicket], ephemeral: true })
-      })
-    }
- 
-    if (customId === "closeticket") {
-      const closingEmbed = new EmbedBuilder()
-      .setDescription('🔒 Are you sure you want to close this ticket?')
-      .setColor('#2f3136')
- 
-      const buttons = new ActionRowBuilder()
-      .addComponents(
-        new ButtonBuilder()
-        .setCustomId('yesclose')
-        .setLabel('Yes')
-        .setStyle(ButtonStyle.Primary)
-        .setEmoji('✅'),
- 
-        new ButtonBuilder()
-        .setCustomId('nodont')
-        .setLabel('No')
-        .setStyle(ButtonStyle.Primary)
-        .setEmoji('❌')
-      )
- 
-      await interaction.reply({ embeds: [closingEmbed], components: [buttons] })
-    }
- 
-    if (customId === "yesclose") {
-      let data = await ticketSchema.findOne({ GuildID: interaction.guild.id });
-      const transcript = await createTranscript(channel, {
-        limit: -1,
-        returnBuffer: false,
-        filename: `ticket-${interaction.user.username}.html`,
-      });
- 
-      const transcriptEmbed = new EmbedBuilder()
-      .setAuthor({ name: `${interaction.guild.name}'s Transcripts`, iconURL: guild.iconURL() })
-      .addFields(
-        {name: `Closed by`, value: `${interaction.user.tag}`}
-      )
-      .setColor('#2f3136')
-      .setTimestamp()
-      .setFooter({ text: `${interaction.guild.name}'s Tickets` })
- 
-      const processEmbed = new EmbedBuilder()
-      .setDescription(` Closing ticket in 10 seconds...`)
-      .setColor('#2f3136')
- 
-      await interaction.reply({ embeds: [processEmbed] })
- 
-      await guild.channels.cache.get(data.Logs).send({
-        embeds: [transcriptEmbed],
-        files: [transcript],
-      });
- 
-      setTimeout(() => {
-        interaction.channel.delete()
-      }, 10000);
-     }
- 
-     if (customId === "nodont") {
-        const noEmbed = new EmbedBuilder()
-        .setDescription('🔒 Cancelled closing ticket.')
-        .setColor('#2f3136')
-  
-        await interaction.reply({ embeds: [noEmbed], ephemeral: true })
-     }
-  }
-})
-
 // POLL SYSTEM
 
-client.on(Events.InteractionCreate, async i => {
+const pollschema = require('./Schemas.js/pollSchema');
+
+client.on(Events.InteractionCreate, async (i) => {
  
     if (!i.guild) return;
     if (!i.message) return;

@@ -1,4 +1,4 @@
-const {SlashCommandBuilder, PermissionsBitField, EmbedBuilder, ChannelType, WebhookClient }= require('discord.js');
+const {SlashCommandBuilder, PermissionsBitField, EmbedBuilder, ChannelType }= require('discord.js');
 const logSchema = require("../../Schemas.js/logSchema");
 const HTTPS = require('https');
  
@@ -8,7 +8,7 @@ module.exports = {
     .setDescription("Configure the logging system.")
     .addSubcommand(command => command.setName('setup').setDescription('Sets up your logging system.').addChannelOption(option => option.setName("channel").setDescription("Specified channel will receive logs.").setRequired(false).addChannelTypes(ChannelType.GuildText, ChannelType.GuildAnnouncement)))
     .addSubcommand(command => command.setName('disable').setDescription('Disables your logging system.')),
-    async execute(interaction, client) {
+    async execute(interaction) {
  
         if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
  
@@ -30,9 +30,6 @@ module.exports = {
                     'Content-Type': 'application/json'
                 }
             }).end();
-
-            // This function doesn't exist according to their support team :|
-            //await webhook.delete();
         }
  
         if (sub === 'setup') {
@@ -41,12 +38,10 @@ module.exports = {
 
             try {
                 const webhook = await logchannel.createWebhook({
-                    avatar: client.user.displayAvatarURL({ dynamic: true }),
-                    name: 'Logging System'
+                    name: 'Nub Bot Logging',
+                    avatar: 'https://cdn.discordapp.com/attachments/1042013863886999602/1121271542949629962/Logo.png'
                 });
 
-                // Upsert means to create it if it doesn't exist
-                // If it's found then update as normal
                 await logSchema.findOneAndUpdate({
                     Guild: interaction.guild.id
                 }, {
@@ -63,28 +58,31 @@ module.exports = {
 
             const setupembed = new EmbedBuilder()
             .setColor('#2f3136')
-            .setTimestamp()
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Logging Enabled`})
+            .setFooter({ text: `Logging System`})
             .setTitle('Logging Enabled')
             .addFields({ name: `Logging was Enabled`, value: `Your logging system has been set up successfuly. Your channel will now receive alerts for actions taken in your server!`})
             .addFields({ name: `Channel`, value: `${logchannel}`})
+            .setTimestamp()
 
             await interaction.reply({ embeds: [setupembed] });
 
         } else if (sub === 'disable') {
 
-            await logSchema.deleteMany({ Guild: interaction.guild.id })
+            if (!data) return await interaction.reply({ content: `You have **not** set up the logging system! \n> Use **/logs setup** to do so.`, ephemeral: true});
 
-            const disableembed = new EmbedBuilder()
-            .setColor('#2f3136')
-            .setTimestamp()
-            .setAuthor({ name: `Logging System`})
-            .setFooter({ text: `Logging Disabled`})
-            .setTitle('Logging Disabled')
-            .addFields({ name: `Logging was Disabled`, value: `Your logging system has been disabled successfuly. Your logging channel will no longer receive alerts for actions taken in your server!`})
+            else {
 
-            await interaction.reply({ embeds: [disableembed] });
+                await logSchema.deleteMany({ Guild: interaction.guild.id })
+                
+                const disableembed = new EmbedBuilder()
+                .setColor('#2f3136')
+                .setFooter({ text: `Logging System`})
+                .setTitle('Logging Disabled')
+                .addFields({ name: `Logging was Disabled`, value: `Your logging system has been disabled successfuly. Your logging channel will no longer receive alerts for actions taken in your server!`})
+                .setTimestamp()
+
+                await interaction.reply({ embeds: [disableembed] });
+            }
         }
 
     }

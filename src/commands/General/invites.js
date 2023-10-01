@@ -3,9 +3,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("invites")
-    .setDescription("Shows an user's invite count within the server.")
+    .setDescription("Shows a user's invite count within the server.")
     .addUserOption(option => option.setName("user").setDescription("The user you want to check invites of.").setRequired(true)),
-    async execute(interaction, message) {
+    async execute(interaction) {
         const user = interaction.options.getUser('user');
         let invites = await interaction.guild.invites.fetch()
         let userInv = invites.filter(u => u.inviter && u.inviter.id === user.id);

@@ -3,7 +3,7 @@ const { SlashCommandBuilder, ChannelType, PermissionsBitField } = require("disco
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("impersonate")
-    .setDescription("Impersonate an user with a webhook.")
+    .setDescription("Impersonate a user with a webhook.")
     .addUserOption(option => option
         .setName("user")
         .setDescription("The user you want to impersonate.")
