@@ -3,7 +3,8 @@ const { SlashCommandBuilder,EmbedBuilder } = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('pp')
-        .setDescription('Better not talk about it.'),
+        .setDescription(`Let's not talk about it.`),
+        
     async execute(interaction) {
         const ppSize = Math.floor(Math.random() * 10) + 1;
         let ppMain = '8';

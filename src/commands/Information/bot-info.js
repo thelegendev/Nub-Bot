@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, CommandInteraction, PermissionFlagsBits,EmbedBuilder,ChatInputCommandInteraction,Client, ChannelType,UserFlags,version } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder,ChatInputCommandInteraction,Client, version } = require("discord.js");
 const { connection } = require("mongoose");
 const os = require("os");
 
@@ -48,35 +48,35 @@ module.exports = {
 
                .addFields(
 
-                   { name: "<:bot:1123907158359158854> Client", value: client.user.tag, inline: false },
+                   { name: "<:bot:1160822375793827870> Client", value: client.user.tag, inline: true },
 
-                   { name: "<:developer:1123960341819301898> Developer", value: `${client.application.owner.tag || "None"}`, inline: false },
+                   { name: "<:developer:1160822447227027519> Developer", value: `${client.application.owner.tag || "None"}`, inline: true },
 
-                   { name: ":calendar_spiral: Created", value: `06-07-2021`, inline: false },
+                   { name: ":calendar_spiral: Created", value: `06-07-2021`, inline: true },
 
-                   { name: "<a:timer:1123960449914900603> Uptime", value: `${uptime}`, inline: false },
+                   { name: "<a:timer:1160822980683771904> Uptime", value: `${uptime}`, inline: true },
 
-                   { name: "<:signal:1123960930661826620> Latency", value: `${client.ws.ping}ms`, inline: false },
+                   { name: "<:signal:1160822953143976008> Latency", value: `${client.ws.ping}ms`, inline: true },
 
-                   { name:":bar_chart: Database", value: status[connection.readyState], inline: false },
+                   { name:":bar_chart: Database", value: status[connection.readyState], inline: true },
 
-                   { name: ":desktop: System", value: os.type().replace("Windows_NT", "Windows").replace("Darwin", "macOS"), inline: false },
+                   { name: ":desktop: System", value: os.type().replace("Windows_NT", "Windows").replace("Darwin", "macOS"), inline: true },
 
-                   { name: ":information_source: CPU Model", value: `${os.cpus()[0].model}`, inline: false },
+                   { name: ":information_source: CPU Model", value: `${os.cpus()[0].model}`, inline: true },
 
-                   { name: "<:cpu:1123960958226792540> CPU Usage", value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}%`, inline: false },
+                   { name: "<:cpu:1160822724076261397> CPU Usage", value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}%`, inline: true },
 
-                   ({name: "<:memory:1123957561910099978> Memory", value: `${(memoryUsed/memoryTotal * 100).toFixed(1)}%`}),
+                   ({ name: "<:memory:1160822647395975248> Memory", value: `${(memoryUsed/memoryTotal * 100).toFixed(1)}%`, inline: true }),
 
-                   { name:"<:nodejs:1123961023452426382> Node.js", value: process.version, inline: false },
+                   { name:"<:nodejs:1160822575543361578> Node.js", value: process.version, inline: true },
 
-                   { name: "<:djs:1123961072639029338> Discord.js", value: `v${version}`, inline: false },
+                   { name: "<:djs:1160822521692684288> Discord.js", value: `v${version}`, inline: true },
 
-                   { name: "<:slash:1123961124216393728> Commands", value: `${client.commands.size}`, inline: false },
+                   { name: "<:slash:1160822770070982656> Commands", value: `${client.commands.size}`, inline: true },
 
-                   { name: "<:server:1123958202065747969> Servers", value: `${client.guilds.cache.size}`, inline: false },
+                   { name: "<:discord:1160789164724338738> Servers", value: `${client.guilds.cache.size}`, inline: true },
 
-                   { name: ":busts_in_silhouette: Users", value: `${client.guilds.cache.reduce((acc, guild) => acc+guild.memberCount, 0)}`, inline: false }
+                   { name: ":busts_in_silhouette: Users", value: `${client.guilds.cache.reduce((acc, guild) => acc+guild.memberCount, 0)}`, inline: true }
 
                )
 

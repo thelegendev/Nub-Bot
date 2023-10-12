@@ -40,7 +40,7 @@ module.exports = {
  
         const centerembed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setDescription(`**Nub Bot** offers a multitude of diversified features to enhance the experience for you and your server. Listed down below are the features that the bot provides. \n\n <:icon1:1100723889098735679> :busts_in_silhouette: **General** \n <:icon2:1100724446525935616> :shield: **Moderation** \n <:icon2:1100724446525935616> :star_struck: **Fun** \n <:icon2:1100724446525935616> :video_game: **Minigame** \n <:icon2:1100724446525935616> :tools: **Utility** \n <:icon2:1100724446525935616> :information_source: **Information** \n <:icon3:1100724523281694781> :gear: **Miscellaneous**`)
+        .setDescription(`**Nub Bot** offers a multitude of diversified features to enhance the experience for you and your server. Listed down below are the features that the bot provides. \n\n <:icon1:1160823145893208166> :busts_in_silhouette: **General** \n <:icon2:1160823168945094716> :shield: **Moderation** \n <:icon2:1160823168945094716> :star_struck: **Fun** \n <:icon2:1160823168945094716> :video_game: **Minigame** \n <:icon2:1160823168945094716> :tools: **Utility** \n <:icon2:1160823168945094716> :information_source: **Information** \n <:icon3:1160823210439348275> :gear: **Miscellaneous**`)
         .setThumbnail(client.user.displayAvatarURL({ dynamic: true }))
         .setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.member.displayAvatarURL({ dynamic: true }) })
         .setTimestamp()

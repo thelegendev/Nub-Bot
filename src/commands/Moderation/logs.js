@@ -1,5 +1,5 @@
 const {SlashCommandBuilder, PermissionsBitField, EmbedBuilder, ChannelType }= require('discord.js');
-const logSchema = require("../../Schemas.js/logSchema");
+const logSchema = require("../../schemas/log");
 const HTTPS = require('https');
  
 module.exports = {

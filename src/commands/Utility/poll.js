@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonStyle, ButtonBuilder } = require('discord.js');
-const pollschema = require('../../Schemas.js/pollSchema');
+const pollSchema = require('../../schemas/poll');
  
 module.exports = {
     data: new SlashCommandBuilder()
@@ -46,7 +46,7 @@ module.exports = {
         const msg = await interaction.channel.send({ embeds: [embed], components: [buttons] });
         msg.createMessageComponentCollector();
  
-        await pollschema.create({
+        await pollSchema.create({
             Msg: msg.id,
             Upvote: 0,
             Downvote: 0,

@@ -7,9 +7,9 @@ module.exports = {
     
     async execute(interaction) {
         let circles = {
-            good: '<:high:1141959052289638440>',
-            okay: '<:mid:1141959164453736479>',
-            bad: '<:low:1141959216383402044>',
+            good: '<:high:1160823035952107620>',
+            okay: '<:mid:1160823054000197672>',
+            bad: '<:low:1160823069443629056>',
         };
 
         const ws = interaction.client.ws.ping;

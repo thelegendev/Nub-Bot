@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require(`discord.js`);
-const warningSchema = require(`../../Schemas.js/warnSchema`);
+const warnSchema = require(`../../schemas/warn`);
  
 module.exports = {
     data: new SlashCommandBuilder()
@@ -11,11 +11,10 @@ module.exports = {
         const { options, guildId } = interaction;
  
         const target = options.getUser('user');
- 
         const embed = new EmbedBuilder()
         const noWarns = new EmbedBuilder()
  
-        warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: target.tag }, async (err, data) => {
+        warnSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: target.tag }, async (err, data) => {
  
             if (err) throw err;
  

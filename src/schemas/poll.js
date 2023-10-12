@@ -1,6 +1,6 @@
-const {model, Schema} = require('mongoose');
+const mongoose = require('mongoose');
  
-let vote = new Schema({
+const pollSchema = new mongoose.Schema({
     Guild: String,
     Msg: String,
     UpMembers: Array,
@@ -10,4 +10,4 @@ let vote = new Schema({
     Owner: String
 });
  
-module.exports = model("poll", vote);
+module.exports = mongoose.model("pollSystem", pollSchema);

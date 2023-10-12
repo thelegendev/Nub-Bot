@@ -3,7 +3,7 @@ const fs = require('fs');
 const { Events }  = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildVoiceStates, GatewayIntentBits.GuildMembers, GatewayIntentBits.DirectMessages] });
 const Logs = require('discord-logs');
-const GiveawaysManager = require("./events/giveaways");
+const GiveawaysManager = require("./events/giveaway");
 
 client.commands = new Collection();
 
@@ -18,7 +18,7 @@ client.giveawayManager = new GiveawaysManager(client, {
       botsCanWin: false,
       embedColor: "#a200ff",
       embedColorEnd: "#550485",
-      reaction: "<a:Tada:1110534852576563270>",
+      reaction: "<a:tada:1160826950386995300>",
     },
 });
 
@@ -51,23 +51,23 @@ Logs(client, {
 
 const {logging} = require("./events/logging");
 
-client.login(process.env.token).then(() => {
+client.login(process.env.TOKEN).then(() => {
     logging(client);
 });
  
 
 // CAPTCHA VERIFICATION SYSTEM
 
-const capschema = require('./Schemas.js/verifySchema');
-const verifyusers = require('./Schemas.js/verifyusersSchema');
+const verifySchema = require('./schemas/verify');
+const captchaSchema = require('./schemas/captcha');
 const { CaptchaGenerator } = require('captcha-canvas');
  
 client.on(Events.InteractionCreate, async (interaction) => {
  
     if (interaction.guild === null) return;
  
-    const verifydata = await capschema.findOne({ Guild: interaction.guild.id });
-    const verifyusersdata = await verifyusers.findOne({ Guild: interaction.guild.id, User: interaction.user.id });
+    const verifydata = await verifySchema.findOne({ Guild: interaction.guild.id });
+    const captchadata = await captchaSchema.findOne({ Guild: interaction.guild.id, User: interaction.user.id });
  
     if (interaction.customId === 'verify') {
  
@@ -83,12 +83,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
             let result4 = Math.floor(Math.random() * letter.length);
             let result5 = Math.floor(Math.random() * letter.length);
  
-            const cap = letter[result] + letter[result2] + letter[result3] + letter[result4] + letter[result5];
-            console.log(cap)
+            const captchacode = letter[result] + letter[result2] + letter[result3] + letter[result4] + letter[result5];
+            console.log(captchacode)
  
             const captcha = new CaptchaGenerator()
             .setDimension(150, 450)
-            .setCaptcha({ text: `${cap}`, size: 60, color: "red"})
+            .setCaptcha({ text: `${captchacode}`, size: 60, color: "red"})
             .setDecoy({ opacity: 0.5 })
             .setTrace({ color: "red" })
  
@@ -139,25 +139,25 @@ client.on(Events.InteractionCreate, async (interaction) => {
  
             })
  
-            if (verifyusersdata) {
+            if (captchadata) {
  
-                await verifyusers.deleteMany({
+                await captchaSchema.deleteMany({
                     Guild: interaction.guild.id,
                     User: interaction.user.id
                 })
  
-                await verifyusers.create ({
+                await captchaSchema.create ({
                     Guild: interaction.guild.id,
                     User: interaction.user.id,
-                    Key: cap
+                    Key: captchacode
                 })
  
             } else {
  
-                await verifyusers.create ({
+                await captchaSchema.create ({
                     Guild: interaction.guild.id,
                     User: interaction.user.id,
-                    Key: cap
+                    Key: captchacode
                 })
  
             }
@@ -171,10 +171,10 @@ client.on(Events.InteractionCreate, async (interaction) => {
  
     if (interaction.customId === 'vermodal') {
  
-        const userverdata = await verifyusers.findOne({ Guild: interaction.guild.id, User: interaction.user.id });
-        const verificationdata = await capschema.findOne({ Guild: interaction.guild.id });
+        const userverdata = await captchaSchema.findOne({ Guild: interaction.guild.id, User: interaction.user.id });
+        const verificationdata = await verifySchema.findOne({ Guild: interaction.guild.id });
  
-        if (verificationdata.Verified.includes(interaction.user.id)) return await interaction.reply({ content: `You have **already** verified within this server!`, ephemeral: true});
+        if (verificationdata.Verified.includes(interaction.user.id)) return await interaction.reply({ content: `You are **already** verified within this server!`, ephemeral: true});
  
         const modalanswer = interaction.fields.getTextInputValue('answer');
         if (modalanswer === userverdata.Key) {
@@ -184,11 +184,11 @@ client.on(Events.InteractionCreate, async (interaction) => {
             try {
                 await interaction.member.roles.add(verrole);
             } catch (err) {
-                return await interaction.reply({ content: `There was an **issue** giving you the **<@&${verificationdata.Role}>** role, try again later!`, ephemeral: true})
+                return await interaction.reply({ content: `There was an **issue** assigning you the **<@&${verificationdata.Role}>** role, try again later!`, ephemeral: true})
             }
  
             await interaction.reply({ content: 'You have been **verified!**', ephemeral: true});
-            await capschema.updateOne({ Guild: interaction.guild.id }, { $push: { Verified: interaction.user.id }});
+            await verifySchema.updateOne({ Guild: interaction.guild.id }, { $push: { Verified: interaction.user.id }});
  
         } else {
             await interaction.reply({ content: `**Oops!** It looks like you **didn't** enter the valid **captcha code**!`, ephemeral: true})
@@ -198,7 +198,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
 
 // AFK SYSTEM
  
-const afkSchema = require('./Schemas.js/afkSchema');
+const afkSchema = require('./schemas/afk');
  
 client.on(Events.MessageCreate, async (message) => {
  
@@ -244,10 +244,10 @@ client.on(Events.MessageCreate, async (message) => {
 
 // REMINDER SYSTEM
 
-const remindSchema = require('./Schemas.js/reminderSchema');
+const reminderSchema = require('./schemas/reminder');
 setInterval(async () => {
 
-    const reminders = await remindSchema.find();
+    const reminders = await reminderSchema.find();
     if (!reminders) return;
     else {
 
@@ -261,7 +261,7 @@ setInterval(async () => {
                 content: `you asked me to remind you about \`${reminder.Remind}\``
             }).catch(err => {return;});
 
-            await remindSchema.deleteMany({
+            await reminderSchema.deleteMany({
                 Time: reminder.Time,
                 User: user.id,
                 Remind: reminder.Remind
@@ -291,7 +291,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 // POLL SYSTEM
 
-const pollschema = require('./Schemas.js/pollSchema');
+const pollSchema = require('./schemas/poll');
 
 client.on(Events.InteractionCreate, async (i) => {
  
@@ -299,7 +299,7 @@ client.on(Events.InteractionCreate, async (i) => {
     if (!i.message) return;
     if (!i.isButton) return;
  
-    const data = await pollschema.findOne({ Guild: i.guild.id, Msg: i.message.id });
+    const data = await pollSchema.findOne({ Guild: i.guild.id, Msg: i.message.id });
     if (!data) return;
     const msg = await i.channel.messages.fetch(data.Msg)
  

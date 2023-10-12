@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require(`discord.js`);
-const warningSchema = require(`../../Schemas.js/warnSchema`);
+const warnSchema = require(`../../schemas/warn`);
  
 module.exports = {
     data: new SlashCommandBuilder()
@@ -16,12 +16,12 @@ module.exports = {
  
         const embed = new EmbedBuilder()
  
-        warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: target.tag }, async (err, data) => {
+        warnSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: target.tag }, async (err, data) => {
  
             if (err) throw err;
  
             if (data) {
-                await warningSchema.findOneAndDelete({ GuildID: guildId, UserID: target.id, UserTag: target.tag})
+                await warnSchema.findOneAndDelete({ GuildID: guildId, UserID: target.id, UserTag: target.tag})
  
                 embed.setColor("#2f3136")
                 .setDescription(`${target.tag}'s warnings have been cleared.`)

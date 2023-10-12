@@ -16,7 +16,7 @@ module.exports = {
             try {
  
                 await interaction.reply({
-                    content: 'An **error** occured while trying to execute this command.', 
+                    content: 'An **error** occured while trying to execute this command!', 
                     ephemeral: true
                 }); 
  

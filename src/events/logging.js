@@ -2,7 +2,7 @@ const { EmbedBuilder, WebhookClient } = require("discord.js");
 
 function logging(client) {
  
-    const logSchema = require("../Schemas.js/logSchema");
+    const logSchema = require("../schemas/log");
  
     function send_log(guildId, embed) {
         logSchema.findOne({ Guild: guildId }, async (data) => {

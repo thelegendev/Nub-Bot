@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const capschema = require('../../Schemas.js/verifySchema');
+const verifySchema = require('../../schemas/verify');
  
 module.exports = {
     data: new SlashCommandBuilder()
@@ -12,7 +12,7 @@ module.exports = {
  
         if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return await interaction.reply({ content: 'You **do not** have the permission to do that!', ephemeral: true});
  
-        const data = await capschema.findOne({ Guild: interaction.guild.id });
+        const data = await verifySchema.findOne({ Guild: interaction.guild.id });
         const sub = interaction.options.getSubcommand();
  
         switch (sub) {
@@ -20,12 +20,12 @@ module.exports = {
  
             const role = await interaction.options.getRole('role');
             const channel = await interaction.options.getChannel('channel');
-            const message = await interaction.options.getString('content') || 'Click the button below to verify!';
+            const message = await interaction.options.getString('content') || 'Click the button below to start your verification process!';
  
             if (data) return await interaction.reply({ content: "You **already** have a verification system **set up**! \n> Use `/verify disable` to undo.", ephemeral: true});
             else {
  
-                await capschema.create({
+                await verifySchema.create({
                     Guild: interaction.guild.id,
                     Role: role.id,
                     Channel: channel.id,
@@ -52,7 +52,7 @@ module.exports = {
                 interaction.reply({ content: `Your **verification system** has been set up!`, ephemeral: true});
                 const msg = await channel.send({ embeds: [verify], components: [buttons] });
  
-                await capschema.updateOne({ Guild: interaction.guild.id }, { $set: { Message: msg.id }});
+                await verifySchema.updateOne({ Guild: interaction.guild.id }, { $set: { Message: msg.id }});
             }
  
             break;
@@ -61,7 +61,7 @@ module.exports = {
             if (!data) return await interaction.reply({ content: `The **verification system** has not been **set up** yet, cannot delete **nothing**...`, ephemeral: true});
             else {
  
-                await capschema.deleteMany({ Guild: interaction.guild.id });
+                await verifySchema.deleteMany({ Guild: interaction.guild.id });
                 const deletemsg = await client.channels.cache.get(data.Channel).messages.fetch(data.Message);
                 await deletemsg.delete();
  

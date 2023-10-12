@@ -56,4 +56,4 @@ const giveawaySchema = new mongoose.Schema({
     }
 }, { id: false });
  
-module.exports = mongoose.model("giveaway", giveawaySchema);
+module.exports = mongoose.model("giveawaySystem", giveawaySchema);

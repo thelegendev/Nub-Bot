@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require("discord.js");
-const warningSchema = require("../../Schemas.js/warnSchema");
+const warnSchema = require("../../schemas/warn");
  
 module.exports = {
     data: new SlashCommandBuilder()
@@ -30,12 +30,12 @@ module.exports = {
         const userTag = `${target.username}#${target.discriminator}`;
         let guild = await interaction.guild.fetch();
  
-        warningSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: userTag }, async (err, data) => {
+        warnSchema.findOne({ GuildID: guildId, UserID: target.id, UserTag: userTag }, async (err, data) => {
  
             if (err) throw err;
  
             if (!data) {
-                data = new warningSchema({
+                data = new warnSchema({
                     GuildID: guildId,
                     UserID: target.id,
                     UserTag: userTag,
@@ -67,7 +67,7 @@ module.exports = {
         const embed = new EmbedBuilder()
         .setColor("#2f3136")
         .setDescription(`**${target.tag}** has been warned. \nReason: **${reason}**`)
-        .setFooter
+        .setFooter({ text: `User Warned`})
         .setTimestamp()
  
         target.send({ embeds: [dmEmbed] }).catch(err => {

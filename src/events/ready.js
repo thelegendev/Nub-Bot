@@ -6,10 +6,12 @@ module.exports = {
     name: 'ready',
     once: true,
     async execute(client) {
-        console.log(`[ ✅ ] ${client.user.tag} is now online!`)
+      console.log(`[ ✅ ] ${client.user.tag} is now online!`)
+      console.log(`[ ⚠️ ] Enabling status...`);
 
-        let servers = await client.guilds.cache.size;
-        let users = await client.guilds.cache.reduce(
+      setInterval(async() => {
+        const servers = await client.guilds.cache.size;
+        const users = await client.guilds.cache.reduce(
         (a, b) => a + b.memberCount,
         0
         );
@@ -21,18 +23,18 @@ module.exports = {
         },
         {
           name: `${servers} servers`,
-          type: ActivityType.Listening,
+          type: ActivityType.Watching,
         },
         {
           name: `${users} users`,
-          type: ActivityType.Watching,
-        },
-      ];
-      console.log(`[ ⚠️ ] Enabling status...`);
-      setInterval(() => {
+          type: ActivityType.Listening,
+        }
+        ];
+
         let random = Math.floor(Math.random() * status.length);
         client.user.setActivity(status[random]);
-      }, `6000`);
+      }, 5000);
+      
       console.log("[ ✅ ] Sucessfully enabled status!");
 
         if (!mongodbURL) return;
