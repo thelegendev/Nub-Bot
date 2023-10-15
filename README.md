@@ -74,8 +74,8 @@ A multipurpose discord bot based on discord.js v14.
 
 - **Project Execution**
 
-    1. Navigate to the `Bot` page on the [Discord Developer Portal](https://discord.com/developers/applications) and click `Reset Token`.
-    2. Paste your bot token into the `token` variable inside the `.env` file.
+    1. Navigate to the `Bot` page on the [Discord Developer Portal](https://discord.com/developers/applications) and click `Reset Token`. Afterwards, create a `.env` file within the root directory.
+    2. Paste your bot token into the `TOKEN` variable inside the `.env` file.
     3. Paste your [MongoDB](https://www.mongodb.com) connection string into the `MONGODBURL` variable inside the `.env` file.
     4. Navigate to the `OAuth2` page and copy the `CLIENT ID`. 
     5. Paste your client ID into the `clientId` variable inside the `handleCommands.js` file.
