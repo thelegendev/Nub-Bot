@@ -1,10 +1,10 @@
 <h1 align="center">Contributing</h1>
 
 When contributing to this repository, please first discuss the change you wish to make via 
-[issues](https://github.com/TheLegenDev/Nub-Bot/issues), [discussions](https://github.com/TheLegenDev/Nub-Bot/discussions)
+[issues](https://github.com/thelegendev/Nub-Bot/issues), [discussions](https://github.com/thelegendev/Nub-Bot/discussions)
 or any other method with the community leaders of this repository before making a change.
 
-Please note we have a [code of conduct](https://github.com/TheLegenDev/Nub-Bot/blob/main/CODE_OF_CONDUCT.md).
+Please note we have a [code of conduct](https://github.com/thelegendev/Nub-Bot/blob/main/CODE_OF_CONDUCT.md).
 We advise you to follow it in all your interactions with the project.
 
 ## Getting Started

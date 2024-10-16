@@ -1,8 +1,8 @@
 <img align="center" alt="Nub Bot banner" src="https://cdn.discordapp.com/attachments/1042013863886999602/1121271560855097374/Text.png">
 
 <p align="center">
-<img align="center" alt="GitHub issues" src="https://img.shields.io/github/issues/TheLegenDev/Nub-Bot?style=for-the-badge"> 
-<img align="center" alt="GitHub license" src="https://img.shields.io/github/license/TheLegenDev/Nub-Bot?style=for-the-badge">
+<img align="center" alt="GitHub issues" src="https://img.shields.io/github/issues/thelegendev/Nub-Bot?style=for-the-badge"> 
+<img align="center" alt="GitHub license" src="https://img.shields.io/github/license/thelegendev/Nub-Bot?style=for-the-badge">
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@ A multipurpose discord bot based on discord.js v14.
 
 > **Note**
 > If you plan to use our source code for your project, it would be appreciated if you credit us.
-> We do not provide coding support. You are expected to solve your personal issue(s) with necessary knowledge. However, if you discover any issue(s) within the public instance of Nub Bot, feel free to report it [here](https://github.com/TheLegenDev/Nub-Bot/issues).
+> We do not provide coding support. You are expected to solve your personal issue(s) with necessary knowledge. However, if you discover any issue(s) within the public instance of Nub Bot, feel free to report it [here](https://github.com/thelegendev/Nub-Bot/issues).
 
 ## Table of Contents
 - [Installation](#installation)
@@ -32,7 +32,7 @@ A multipurpose discord bot based on discord.js v14.
 
     1. Fork the Github project :
        1. Sign up / Sign in to [GitHub](https://github.com/).
-       2. Navigate to [Nub-Bot](https://github.com/TheLegenDev/Nub-Bot).
+       2. Navigate to [Nub-Bot](https://github.com/thelegendev/Nub-Bot).
        3. Click `Star` to support development.
        4. Click `Fork` to copy all code to your own repository.
    
@@ -90,10 +90,10 @@ A multipurpose discord bot based on discord.js v14.
     10. Open a new terminal and type `node .` or `node src/index.js` in there to turn the bot online.
         
 ## Contributing
-We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/TheLegenDev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
+We're open to accepting contributions. Please refer to our [contributing guide](https://github.com/thelegendev/Nub-Bot/blob/main/CONTRIBUTING.md) before making one.
 
 ## Support
 Connect with us on [Discord](https://discord.gg/URZnqtEbsQ) for support / any related inquiry.
 
 ## License
-Released under the terms of [GNU General Public License v3.0](https://github.com/TheLegenDev/Nub-Bot/blob/main/LICENSE) license.
+Released under the terms of [GNU General Public License v3.0](https://github.com/thelegendev/Nub-Bot/blob/main/LICENSE) license.
